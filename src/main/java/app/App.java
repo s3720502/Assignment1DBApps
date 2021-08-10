@@ -23,7 +23,7 @@ public class App {
    /**
     * TODO update the username to match your own RMIT student number eg "s1234567"
     **/
-   public static final String RMIT_USERNAME = "s3720502";
+   public static final String RMIT_USERNAME = "s3728823";
    public static char[] password = null;
 
    public static void main(String[] args) throws Exception {

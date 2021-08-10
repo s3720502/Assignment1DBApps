@@ -23,8 +23,8 @@ public class JDBCConnection {
    // the default oracle account uses the the read only MOVIES database
    // once you create a set of tables in your own account, update this to your RMIT
    // Oracle account details
-   private static final String DATABASE_USERNAME = "romovies";
-   private static final String DATABASE_PASSWORD = "movies";
+   private static final String DATABASE_USERNAME = "s3728823";
+   private static final String DATABASE_PASSWORD = "24_Fountain";
 
    private static final String DATABASE_URL = "jdbc:oracle:thin:@//localhost:9922/CSAMPR1.its.rmit.edu.au";
    private static JDBCConnection jdbc = null;
