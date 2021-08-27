@@ -23,34 +23,34 @@ public class JDBCConnection {
    // the default oracle account uses the the read only MOVIES database
    // once you create a set of tables in your own account, update this to your RMIT
    // Oracle account details
-   private static final String DATABASE_USERNAME = "s3728823";
-   private static final String DATABASE_PASSWORD = "24_Fountain";
+   private static final String DATABASE_USERNAME = "s3720502";
+   private static final String DATABASE_PASSWORD = "Monkeynuts15!";
 
    private static final String DATABASE_URL = "jdbc:oracle:thin:@//localhost:9922/CSAMPR1.its.rmit.edu.au";
    private static JDBCConnection jdbc = null;
    private static Connection connection;
 
    /**
-   * Singleton function to return single copy of this class to other classes
-   **/
-   public static JDBCConnection getConnection(){
+    * Singleton function to return single copy of this class to other classes
+    **/
+   public static JDBCConnection getConnection() {
 
-      //check that ssh session is still open (if not reopen)
+      // check that ssh session is still open (if not reopen)
       SSHTunnel.getSession();
 
-      //check that JDBCconnection is available (if not establish)
-      if(jdbc==null){
+      // check that JDBCconnection is available (if not establish)
+      if (jdbc == null) {
          jdbc = new JDBCConnection();
       }
       return jdbc;
    }
 
    /**
-   * Hidden constructor to establish Database connection (once)
-   **/
+    * Hidden constructor to establish Database connection (once)
+    **/
    private JDBCConnection() {
       System.out.println("Created JDBC Connection Object");
-      
+
       try {
          // Connect to JDBC data base
          connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
@@ -61,9 +61,9 @@ public class JDBCConnection {
    }
 
    /**
-   * Closes the database connection - called only when server shutdown
-   **/
-   public static void closeConnection(){
+    * Closes the database connection - called only when server shutdown
+    **/
+   public static void closeConnection() {
       try {
          if (connection != null) {
             connection.close();
@@ -74,6 +74,44 @@ public class JDBCConnection {
          System.err.println(e.getMessage());
       }
    }
+
+   // public ArrayList<String> getMembers() {
+   // ArrayList<String> members = new ArrayList<String>();
+
+   // try {
+   // Statement statement = connection.createStatement();
+   // statement.setQueryTimeout(30);
+
+   // String query = "SELECT *" + "\n" + "FROM FBLMembers";
+
+   // ResultSet results = statement.executeQuery(query);
+
+   // // Process all of the results
+   // // The "results" variable is similar to an array
+   // // We can iterate through all of the database query results
+   // while (results.next()) {
+   // // We can lookup a column of the a single record in the
+   // // result using the column name
+   // // BUT, we must be careful of the column type!
+   // // int id = results.getInt("mvnumb");
+   // String memberName = results.getString("fullname");
+   // // int year = results.getInt("yrmde");
+   // // String type = results.getString("mvtype");
+
+   // // For now we will just store the movieName and ignore the id
+   // members.add(memberName);
+   // }
+
+   // // Close the statement because we are done with it
+   // statement.close();
+   // } catch (SQLException e) {
+   // // If there is an error, lets just print the error
+   // System.err.println(e.getMessage());
+   // }
+
+   // // Finally we return all of the movies
+   // return members;
+   // }
 
    /**
     * Get all of the Movies in the database
@@ -87,8 +125,7 @@ public class JDBCConnection {
          statement.setQueryTimeout(30);
 
          // The Query
-         String query = "SELECT *"   + "\n" +
-                        "FROM movie" ;
+         String query = "SELECT *" + "\n" + "FROM movie";
 
          // Get Result
          ResultSet results = statement.executeQuery(query);
@@ -129,7 +166,7 @@ public class JDBCConnection {
       ArrayList<String> movies = new ArrayList<String>();
 
       // Setup the variable for the JDBC connection
-      //Connection connection = null;
+      // Connection connection = null;
 
       try {
          // Prepare a new SQL Query & Set a timeout
@@ -137,9 +174,7 @@ public class JDBCConnection {
          statement.setQueryTimeout(30);
 
          // The Query
-         String query = "SELECT *"                                        + "\n" +
-                        "FROM movie"                                      + "\n" +
-                        "WHERE LOWER(mvtype) = LOWER('" + movieType + "')";
+         String query = "SELECT *" + "\n" + "FROM movie" + "\n" + "WHERE LOWER(mvtype) = LOWER('" + movieType + "')";
          System.out.println(query);
 
          // Get Result

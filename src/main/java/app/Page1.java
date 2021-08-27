@@ -8,10 +8,9 @@ import io.javalin.http.Handler;
 /**
  * Temporary HTML as an example page.
  * 
- * Based on the Project Workshop code examples.
- * This page currently:
- *  - Provides a link back to the index page
- *  - Displays the list of movies from the Movies Database using the JDBCConnection
+ * Based on the Project Workshop code examples. This page currently: - Provides
+ * a link back to the index page - Displays the list of movies from the Movies
+ * Database using the JDBCConnection
  *
  * @author Timothy Wiley, 2021. email: timothy.wiley@rmit.edu.au
  * @author Santha Sumanasekara, 2021. email: santha.sumanasekara@rmit.edu.au
@@ -50,7 +49,7 @@ public class Page1 implements Handler {
       ArrayList<String> movies = jdbc.getMovies();
 
       // Add HTML for the movies list
-      html = html + "<h1>Movies</h1>" + "<ul>\n";
+      html = html + "<h1>Members</h1>" + "<ul>\n";
 
       // Finally we can print out all of the movies
       for (String movie : movies) {

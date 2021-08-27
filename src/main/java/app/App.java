@@ -20,17 +20,16 @@ public class App {
    public static final String CSS_DIR = "css/";
    public static final String IMAGES_DIR = "images/";
 
-   /**
-    * TODO update the username to match your own RMIT student number eg "s1234567"
-    **/
-   public static final String RMIT_USERNAME = "s3728823";
+   /* update the username to match your own RMIT student number eg "s1234567" */
+   public static final String RMIT_USERNAME = "s3720502";
    public static char[] password = null;
 
    public static void main(String[] args) throws Exception {
 
       // get general RMIT password
       try {
-         password = PasswordField.getPassword(System.in, "Click here and enter your RMIT password for account \"" + RMIT_USERNAME + "\": ");
+         password = PasswordField.getPassword(System.in,
+               "Click here and enter your RMIT password for account \"" + RMIT_USERNAME + "\": ");
       } catch (IOException ioe) {
          ioe.printStackTrace();
       }
