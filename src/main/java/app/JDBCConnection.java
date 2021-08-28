@@ -75,13 +75,25 @@ public class JDBCConnection {
       }
    }
 
-   // public ArrayList<String> getLogin()
-   // {
-   // ArrayList<String> login = new ArrayList<String>();
+   // REGISTER FUNCTION
+   // public ArrayList<String> getRegister() {
+   // ArrayList<String> register = new ArrayList<String>();
 
-   // try
-   // {
-   // Statement statement
+   // try {
+   // Statement statement = connection.createStatement();
+   // statement.setQueryTimeout(30);
+
+   // String query = "INSERT INTO FBLMembers (EMAIL, FULLNAME, SCREENNAME, DOB,
+   // GENDER, STATUS, LOCATION, VISIIBIlITY)"
+   // + "\n" + "VALUE ();";
+
+   // ResultSet results = statement.executeUpdate(query);
+
+   // results.next();
+
+   // statement.close();
+   // } catch (SQLException e) {
+   // System.err.println(e.getMessage());
    // }
    // }
 

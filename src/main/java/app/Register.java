@@ -31,8 +31,7 @@ public class Register implements Handler {
 
         // Add HTML for form. Includes redirect to home
         // Includes Textfields for Email and Password
-
-        /****** NEED TO ADD PROPER AUTHENTICATION ******/
+        /****** NEED TO ADD PROPER UPDATING/INSERT TO FBLMember TABLE ******/
         html = html + "<form action='/homepage.html'>" + "<label for='email'>Email:</label>"
                 + "<input type='text' id='email' name='email'><br><br>" + "<label for='password'>Password:</label>"
                 + "<input type='password' id='password' name='password'><br><br>"
@@ -44,6 +43,11 @@ public class Register implements Handler {
                 + "<label for='status'>Status:</label>" + "<input type'text' id='status' name='status'<br><br>"
                 + "<label for='location'>Location:</label>" + "<input type'text' id='location' name='location'<br><br>"
                 + "<input type='submit' value='Register'>" + "</form>";
+
+        // Add Function for the 'Register' Button
+        // JDBCConnection jdbc = JDBCConnection.getConnection();
+
+        // ArrayList<String> register = jdbc.getRegister();
 
         // Finish the List HTML
         html = html + "</ul>\n";
