@@ -32,17 +32,25 @@ public class Register implements Handler {
         // Add HTML for form. Includes redirect to home
         // Includes Textfields for Email and Password
         /****** NEED TO ADD PROPER UPDATING/INSERT TO FBLMember TABLE ******/
-        html = html + "<form action='/homepage.html'>" + "<label for='email'>Email:</label>"
-                + "<input type='text' id='email' name='email'><br><br>" + "<label for='password'>Password:</label>"
-                + "<input type='password' id='password' name='password'><br><br>"
-                + "<label for='fullname'>Full Name:</label>" + "<input type'text' id='fullname' name='fullname'<br><br>"
-                + "<label for='screenname'>Screen Name:</label>"
-                + "<input type'text' id='screenname' name='screenname'<br><br>"
-                + "<label for='dob'>Date of Birth:</label>" + "<input type'text' id='dob' name='dob'<br><br>"
-                + "<label for='gender'>Gender:</label>" + "<input type'text' id='gender' name='gender'<br><br>"
-                + "<label for='status'>Status:</label>" + "<input type'text' id='status' name='status'<br><br>"
-                + "<label for='location'>Location:</label>" + "<input type'text' id='location' name='location'<br><br>"
-                + "<input type='submit' value='Register'>" + "</form>";
+        html = html + "<form action='/homepage.html'>";
+        html = html     + "<label for='email'>Email:</label>";
+        html = html     + "<input type='text' id='email' name='email'><br><br>";
+        html = html     + "<label for='password'>Password:</label>";
+        html = html     + "<input type='password' id='password' name='password'><br><br>";
+        html = html     + "<label for='fullname'>Full Name:</label>";
+        html = html     + "<input type'text' id='fullname' name='fullname'><br><br>";
+        html = html     + "<label for='screenname'>Screen Name:</label>";
+        html = html     + "<input type'text' id='screenname' name='screenname'><br><br>";
+        html = html     + "<label for='dob'>Date of Birth:</label>";
+        html = html     + "<input type'text' id='dob' name='dob'><br><br>";
+        html = html     + "<label for='gender'>Gender:</label>";
+        html = html     + "<input type'text' id='gender' name='gender'><br><br>";
+        html = html     + "<label for='status'>Status:</label>";
+        html = html     + "<input type'text' id='status' name='status'><br><br>";
+        html = html     + "<label for='location'>Location:</label>";
+        html = html     + "<input type'text' id='location' name='location'><br><br>";
+        html = html     + "<input type='submit' value='Register'>";
+        html = html + "</form>";
 
         // Add Function for the 'Register' Button
         // JDBCConnection jdbc = JDBCConnection.getConnection();
