@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+//import java.sql.PreparedStatement;
 
 /**
  * Class for Managing the JDBC Connection to a SQLLite Database. Allows SQL
@@ -75,28 +76,50 @@ public class JDBCConnection {
       }
    }
 
-   // // REGISTER FUNCTION
-   // public ArrayList<String> getRegister() {
-   //    ArrayList<String> register = new ArrayList<String>();
+   /**** REGISTRATION ATTEMP 1 ****/
+   public String getRegister(String email, String fullname, String screenname, String dob, String gender, String status, String location, String visiibility){
+      String register = new String();
+      try {
+         Statement statement = connection.createStatement();
+         statement.setQueryTimeout(30);
+         
+         String sql = "INSERT INTO FBLMembers (EMAIL, FULLNAME, SCREENNAME, DOB, GENDER, STATUS, LOCATION)"
+         + "\n" + "VALUES ('" + email + "','" + fullname + "','" + screenname + "',TO_DATE('" + dob + "','YYYY-MM-DD'),'" + gender + "','" + status + "','" + location + "');";
+            
+         System.out.println(sql);
 
-   //    try {
-   //    Statement statement = connection.createStatement();
-   //    statement.setQueryTimeout(30);
+         statement.executeUpdate(sql);
 
-   //    String sql = "INSERT INTO FBLMembers (EMAIL, FULLNAME, SCREENNAME, DOB, GENDER, STATUS, LOCATION, VISIIBIlITY)"
-   //    + "\n" + "VALUES ('email', 'fullname', 'screenname', DATE'dob', 'gender', 'status', 'location', 'visiibility');";
-   //    int results = statement.executeUpdate(sql.toString());
+         statement.close();
 
-   //    //ResultSet results = statement.executeUpdate(sql);
-      
-   //    //return results;
+      } catch (SQLException e) {
+         System.err.println(e.getMessage());
+      }
+      return register;
+   }
+   /**** REGISTRATION ATTEMP 2 ****/
+   // public ArrayList<String> getRegister(String email, String fullname, String screenname, String dob, String gender, String status, String location, String visi) {
+   //    ArrayList<String> register = new ArrayList<String>();     
+   //       try {
+   //          Statement statement = connection.createStatement();
+   //          statement.setQueryTimeout(30);
 
-   //       statement.close();
-   //    } catch (SQLException e) {
-   //    System.err.println(e.getMessage());
-   //    }
+   //          String sql = "INSERT INTO FBLMembers (EMAIL, FULLNAME, SCREENNAME, DOB, GENDER, STATUS, LOCATION)"
+   //          + "\n" + "VALUES ('" + email + "','" + fullname + "','" + screenname + "',TO_DATE('" + dob + "','YYYY-MM-DD'),'" + gender + "','" + status + "','" + location + "');";
+            
+   //          System.out.println(sql);
+
+   //          statement.executeUpdate(sql);
+
+   //          statement.close();
+
+   //       } catch (SQLException e) {
+   //          System.err.println(e.getMessage());
+   //       }
+   //    return register;
    // }
 
+   //DISPLAYS ALL MEMBERS
    public ArrayList<String> getMembers() {
       ArrayList<String> members = new ArrayList<String>();
 
@@ -133,6 +156,30 @@ public class JDBCConnection {
 
       // Finally we return all of the movies
       return members;
+   }
+
+   /**** LOGIN ATTEMPT 1****/
+   public ArrayList<String> getLogin(String email, String password) {
+      ArrayList<String> login = new ArrayList<String>();
+
+      try {
+         Statement statement = connection.createStatement();
+         statement.setQueryTimeout(30);
+
+         String query = "SELECT *" + "\n" + "FROM passwords"
+         + "\n" + "WHERE email = '" + email + "' AND password = '" + password + "';";
+
+         /*ResultSet results = */statement.executeQuery(query);
+
+         // Close the statement because we are done with it
+         statement.close();
+      } catch (SQLException e) {
+         // If there is an error, lets just print the error
+         System.err.println(e.getMessage());
+      }
+
+      // Finally we return all of the movies
+      return login;
    }
 
    /**

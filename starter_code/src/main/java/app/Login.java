@@ -1,6 +1,6 @@
 package app;
 
-//import java.util.ArrayList;
+import java.util.ArrayList;
 
 import io.javalin.http.Context;
 import io.javalin.http.Handler;
@@ -47,8 +47,20 @@ public class Login implements Handler {
         // Finish the HTML webpage
         html = html + "</body>" + "</html>\n";
 
+        String email = context.formParam("email");
+        loginUser(email);
+        String password = context.formParam("password");
+        loginUser(password);
+
         // DO NOT MODIFY THIS
         // Makes Javalin render the webpage
         context.html(html);
+    }
+
+    public String loginUser(String type) {
+        JDBCConnection jdbc = JDBCConnection.getConnection();
+        ArrayList<String> login = jdbc.getLogin(type, type); 
+        
+        return login.toString();
     }
 }

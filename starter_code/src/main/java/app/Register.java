@@ -14,38 +14,32 @@ public class Register implements Handler {
         // Create a simple HTML webpage in a String
         String html = "<html>\n";
 
-        // Add some Header information
-        html = html + "<head>" + "<title>Register for FBL</title>\n";
-
-        // Add some CSS (external file)
-        html = html + "<link rel='stylesheet' type='text/css' href='common.css' />\n";
-
-        // Add the body
-        html = html + "<body>\n";
-
-        // Add HTML for the logo.png image
-        html = html + "<img src='logo.png' height='200px'/>\n";
-
-        // Add HTML for the list of pages
-        html = html + "<h1>Register</h1>" + "<ul>\n";
-
-        // Add HTML for form. Includes redirect to home
-        /****** NEED TO ADD PROPER UPDATING/INSERT TO FBLMember TABLE ******/
-
-        // Add Function for the 'Register' Button
-        //JDBCConnection jdbc = JDBCConnection.getConnection();
-
-        //ArrayList<String> register = jdbc.getRegister();
-
-        // Finish the List HTML
-        html = html + "</ul>\n";
-
-        // Finish the HTML webpage
-        html = html + "</body>" + "</html>\n";
-
+        /****** NEED TO ADD PROPER UPDATING/INSERT TO FBLMember TABLE ******/        
+        String email = context.formParam("email");
+        createUser(email);
+        String fullname = context.formParam("fullname");
+        createUser(fullname);
+        String screenname = context.formParam("screename");
+        createUser(screenname);
+        String dob = context.formParam("dob");
+        createUser(dob);
+        String gender = context.formParam("gender");
+        createUser(gender);
+        String status = context.formParam("status");
+        createUser(status);
+        String location = context.formParam("location");
+        createUser(location);
+        
         // DO NOT MODIFY THIS
         // Makes Javalin render the webpage
         context.html(html);
         context.render("register.html");
+    }
+
+    public String createUser(String type) {
+        JDBCConnection jdbc = JDBCConnection.getConnection();
+        String register = jdbc.getRegister(type, type, type, type, type, type, type, type); 
+        
+        return register.toString();
     }
 }
