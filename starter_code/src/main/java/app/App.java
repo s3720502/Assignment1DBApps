@@ -81,6 +81,8 @@ public class App {
     **/
    public static void configureRoutes(Javalin app) {
       // All webpages are listed here as GET pages
+      app.get(Login.URL, new Login());
+      app.get(Register.URL, new Register());
       app.get(Index.URL, new Index());
       app.get(Page1.URL, new Page1());
       app.get(Page2.URL, new Page2());

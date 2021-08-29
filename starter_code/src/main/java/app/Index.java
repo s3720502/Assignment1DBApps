@@ -15,7 +15,7 @@ import io.javalin.http.Handler;
 public class Index implements Handler {
 
    // URL of this page relative to http://localhost:7000/
-   public static final String URL = "/";
+   public static final String URL = "/homepage.html";
 
    @Override
    public void handle(Context context) throws Exception {
