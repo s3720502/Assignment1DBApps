@@ -30,27 +30,7 @@ public class Register implements Handler {
         html = html + "<h1>Register</h1>" + "<ul>\n";
 
         // Add HTML for form. Includes redirect to home
-        // Includes Textfields for Email and Password
         /****** NEED TO ADD PROPER UPDATING/INSERT TO FBLMember TABLE ******/
-        // html = html + "<form action='/homepage.html'>";
-        // html = html     + "<label for='email'>Email:</label>";
-        // html = html     + "<input type='text' id='email' name='email'><br><br>"; //email
-        // html = html     + "<label for='password'>Password:</label>";
-        // html = html     + "<input type='password' id='password' name='password'><br><br>"; //password
-        // html = html     + "<label for='fullname'>Full Name:</label>";
-        // html = html     + "<input type'text' id='fullname' name='fullname'><br><br>"; //fullname
-        // html = html     + "<label for='screenname'>Screen Name:</label>";
-        // html = html     + "<input type'text' id='screenname' name='screenname'><br><br>"; //screenname
-        // html = html     + "<label for='dob'>Date of Birth:</label>";
-        // html = html     + "<input type'text' id='dob' name='dob'><br><br>"; //dob
-        // html = html     + "<label for='gender'>Gender:</label>";
-        // html = html     + "<input type'text' id='gender' name='gender'><br><br>"; //gender
-        // html = html     + "<label for='status'>Status:</label>";
-        // html = html     + "<input type'text' id='status' name='status'><br><br>"; //status
-        // html = html     + "<label for='location'>Location:</label>";
-        // html = html     + "<input type'text' id='location' name='location'><br><br>"; //location
-        // html = html     + "<input type='submit' value='Register'>";
-        // html = html + "</form>";
 
         // Add Function for the 'Register' Button
         //JDBCConnection jdbc = JDBCConnection.getConnection();
