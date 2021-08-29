@@ -75,26 +75,26 @@ public class JDBCConnection {
       }
    }
 
-   // REGISTER FUNCTION
+   // // REGISTER FUNCTION
    // public ArrayList<String> getRegister() {
-   // ArrayList<String> register = new ArrayList<String>();
+   //    ArrayList<String> register = new ArrayList<String>();
 
-   // try {
-   // Statement statement = connection.createStatement();
-   // statement.setQueryTimeout(30);
+   //    try {
+   //    Statement statement = connection.createStatement();
+   //    statement.setQueryTimeout(30);
 
-   // String query = "INSERT INTO FBLMembers (EMAIL, FULLNAME, SCREENNAME, DOB,
-   // GENDER, STATUS, LOCATION, VISIIBIlITY)"
-   // + "\n" + "VALUE ();";
+   //    String sql = "INSERT INTO FBLMembers (EMAIL, FULLNAME, SCREENNAME, DOB, GENDER, STATUS, LOCATION, VISIIBIlITY)"
+   //    + "\n" + "VALUES ('email', 'fullname', 'screenname', DATE'dob', 'gender', 'status', 'location', 'visiibility');";
+   //    int results = statement.executeUpdate(sql.toString());
 
-   // ResultSet results = statement.executeUpdate(query);
+   //    //ResultSet results = statement.executeUpdate(sql);
+      
+   //    //return results;
 
-   // results.next();
-
-   // statement.close();
-   // } catch (SQLException e) {
-   // System.err.println(e.getMessage());
-   // }
+   //       statement.close();
+   //    } catch (SQLException e) {
+   //    System.err.println(e.getMessage());
+   //    }
    // }
 
    public ArrayList<String> getMembers() {
