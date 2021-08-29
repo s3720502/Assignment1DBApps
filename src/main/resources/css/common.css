@@ -1,0 +1,27 @@
+/* -----------------------
+Base styles
+------------------------*/
+
+body
+{
+<<<<<<< HEAD
+	margin: 0%;
+=======
+	margin: 0;
+>>>>>>> eef0a0271dc19d0246e4c1f0960e8f1b18041fa0
+	padding: 0;
+	color: #000000;
+	background-color: #a7a7ce;
+	font: 1em/1.2 "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif;
+<<<<<<< HEAD
+	position: auto;
+}
+
+.center {
+	margin: 0%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+=======
+>>>>>>> eef0a0271dc19d0246e4c1f0960e8f1b18041fa0
+}
