@@ -30,7 +30,7 @@ public class Page4 implements Handler {
       html = html + "<head>" + "<title>Page 4: All Movies</title>\n";
 
       // Add some CSS (external file)
-      html = html + "<link rel='stylesheet' type='text/css' href='common.css' />\n";
+      html = html + "<link rel='stylesheet' type='text/css' href='Page4.css' />\n";
 
       // Add the body
       html = html + "<body>\n";

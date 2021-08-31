@@ -4,18 +4,21 @@ Base styles
 
 body
 {
-	margin: -5%;
+	margin: 0%;
 	padding: 0;
 	color: #000000;
 	background-color: #a7a7ce;
 	font: 1em/1.2 "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif;
-	position: auto;
+	position: top;
 	text-align: center;
 }
 
 .center {
-	margin: 5%;
+	margin: -5%;
 	display: block;
 	margin-left: auto;
+	position: center;
 	margin-right: auto;
+	position: center;
+
 }
