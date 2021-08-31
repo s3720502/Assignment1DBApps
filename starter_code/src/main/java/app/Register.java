@@ -14,6 +14,7 @@ public class Register implements Handler {
         // Create a simple HTML webpage in a String
         String html = "<html>\n";
 
+        //TESTING BRANCH
         /****** NEED TO ADD PROPER UPDATING/INSERT TO FBLMember TABLE ******/        
         String email = context.formParam("email");
         createUser(email);
