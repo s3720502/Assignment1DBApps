@@ -30,6 +30,7 @@ public class Register implements Handler {
         String location = context.formParam("location");
         createUser(location);
         
+        
         // DO NOT MODIFY THIS
         // Makes Javalin render the webpage
         context.html(html);

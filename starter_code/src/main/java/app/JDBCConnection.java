@@ -84,7 +84,7 @@ public class JDBCConnection {
          statement.setQueryTimeout(30);
          
          String sql = "INSERT INTO FBLMembers (EMAIL, FULLNAME, SCREENNAME, DOB, GENDER, STATUS, LOCATION)"
-         + "\n" + "VALUES ('" + email + "','" + fullname + "','" + screenname + "',TO_DATE('" + dob + "','YYYY-MM-DD'),'" + gender + "','" + status + "','" + location + "');";
+         + "\n" + "VALUES ('" + email + "','" + fullname + "','" + screenname + "',TO_DATE('" + dob + "','YYYY-MM-DD'),'" + gender + "','" + status + "','" + location + "')";
             
          System.out.println(sql);
 
