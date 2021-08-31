@@ -8,6 +8,7 @@ import io.javalin.http.Handler;
 public class Register implements Handler {
     // URL of this page relative to http://localhost:7000/
     public static final String URL = "/register.html";
+    JDBCConnection jdbc = JDBCConnection.getConnection();
 
     @Override
     public void handle(Context context) throws Exception {
@@ -17,19 +18,61 @@ public class Register implements Handler {
         //TESTING BRANCH
         /****** NEED TO ADD PROPER UPDATING/INSERT TO FBLMember TABLE ******/        
         String email = context.formParam("email");
-        createUser(email);
+        if (email == null)
+        {
+            html = html + "<h2><i>No Results to show for textbox</i></h2>\n";
+        }
+        else{
+            createUser(email);
+        }
         String fullname = context.formParam("fullname");
-        createUser(fullname);
+        if (fullname == null)
+        {
+            html = html + "<h2><i>No Results to show for textbox</i></h2>\n";
+        }
+        else{
+            createUser(fullname);
+        }
         String screenname = context.formParam("screename");
-        createUser(screenname);
+        if (screenname == null)
+        {
+            html = html + "<h2><i>No Results to show for textbox</i></h2>\n";
+        }
+        else{
+            createUser(screenname);
+        }
         String dob = context.formParam("dob");
-        createUser(dob);
+        if (dob == null)
+        {
+            html = html + "<h2><i>No Results to show for textbox</i></h2>\n";
+        }
+        else{
+            createUser(dob);
+        }
         String gender = context.formParam("gender");
-        createUser(gender);
+        if (gender == null)
+        {
+            html = html + "<h2><i>No Results to show for textbox</i></h2>\n";
+        }
+        else{
+            createUser(gender);
+        }
         String status = context.formParam("status");
-        createUser(status);
+        if (status == null)
+        {
+            html = html + "<h2><i>No Results to show for textbox</i></h2>\n";
+        }
+        else{
+            createUser(status);
+        }
         String location = context.formParam("location");
-        createUser(location);
+        if (location == null || location == "")
+        {
+            html = html + "<h2><i>No Results to show for textbox</i></h2>\n";
+        }
+        else{
+            createUser(location);
+        }
         
         
         // DO NOT MODIFY THIS
@@ -40,8 +83,7 @@ public class Register implements Handler {
 
     public String createUser(String type) {
         JDBCConnection jdbc = JDBCConnection.getConnection();
-        String register = jdbc.getRegister(type, type, type, type, type, type, type, type); 
-        
-        return register.toString();
+        jdbc.getRegister(type, type, type, type, type, type, type);
+        return null;
     }
 }

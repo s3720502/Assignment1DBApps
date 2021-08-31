@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-//import java.sql.PreparedStatement;
+import java.sql.PreparedStatement;
 
 /**
  * Class for Managing the JDBC Connection to a SQLLite Database. Allows SQL
@@ -76,48 +76,57 @@ public class JDBCConnection {
       }
    }
 
-   /**** REGISTRATION ATTEMP 1 ****/
-   public String getRegister(String email, String fullname, String screenname, String dob, String gender, String status, String location, String visiibility){
-      String register = new String();
-      try {
-         Statement statement = connection.createStatement();
-         statement.setQueryTimeout(30);
+   /**** REGISTRATION ATTEMPT 1 ****/
+   // public String getRegister(String email, String fullname, String screenname, String dob, String gender, String status, String location){
+   //    String register = new String();
+   //    try {
+   //       Statement statement = connection.createStatement();
+   //       statement.setQueryTimeout(30);
          
-         String sql = "INSERT INTO FBLMembers (EMAIL, FULLNAME, SCREENNAME, DOB, GENDER, STATUS, LOCATION)"
-         + "\n" + "VALUES ('" + email + "','" + fullname + "','" + screenname + "',TO_DATE('" + dob + "','YYYY-MM-DD'),'" + gender + "','" + status + "','" + location + "')";
+   //       String sql = "INSERT INTO FBLMembers (EMAIL, FULLNAME, SCREENNAME, DOB, GENDER, STATUS, LOCATION)"
+   //       + "\n" + "VALUES ('" + email + "','" + fullname + "','" + screenname + "',TO_DATE('" + dob + "','YYYY-MM-DD'),'" + gender + "','" + status + "','" + location + "')";
             
-         System.out.println(sql);
+   //       System.out.println(sql);
 
-         statement.executeUpdate(sql);
+   //       statement.executeUpdate(sql);
 
-         statement.close();
+   //       statement.close();
 
-      } catch (SQLException e) {
-         System.err.println(e.getMessage());
-      }
-      return register;
-   }
-   /**** REGISTRATION ATTEMP 2 ****/
-   // public ArrayList<String> getRegister(String email, String fullname, String screenname, String dob, String gender, String status, String location, String visi) {
-   //    ArrayList<String> register = new ArrayList<String>();     
-   //       try {
-   //          Statement statement = connection.createStatement();
-   //          statement.setQueryTimeout(30);
-
-   //          String sql = "INSERT INTO FBLMembers (EMAIL, FULLNAME, SCREENNAME, DOB, GENDER, STATUS, LOCATION)"
-   //          + "\n" + "VALUES ('" + email + "','" + fullname + "','" + screenname + "',TO_DATE('" + dob + "','YYYY-MM-DD'),'" + gender + "','" + status + "','" + location + "');";
-            
-   //          System.out.println(sql);
-
-   //          statement.executeUpdate(sql);
-
-   //          statement.close();
-
-   //       } catch (SQLException e) {
-   //          System.err.println(e.getMessage());
-   //       }
+   //    } catch (SQLException e) {
+   //       System.err.println(e.getMessage());
+   //    }
    //    return register;
    // }
+
+
+   /**** REGISTRATION ATTEMP 2 ****/
+   public String getRegister(String email, String fullname, String screenname, String dob, String gender, String status, String location) {
+
+         try {
+            PreparedStatement ps = connection.prepareStatement("INSERT INTO FBLMembers (EMAIL, FULLNAME, SCREENNAME, DOB, GENDER, STATUS, LOCATION) VALUES (?,?,?,TO_DATE(?, 'YYYY-MM-DD'),?,?,?)");
+            ps.setQueryTimeout(30);
+
+            ps.setString(1, email);
+            ps.setString(2, fullname);
+            ps.setString(3, screenname);
+            ps.setString(4, dob);
+            ps.setString(5, gender);
+            ps.setString(6, status);
+            ps.setString(7, location);
+
+            int x = ps.executeUpdate();
+            
+            if(x > 0){
+               System.out.println("Registration Successful!");
+            } else{
+               System.out.println("Registration Unsuccessful");
+            }
+
+         } catch (SQLException e) {
+            System.err.println(e.getMessage());
+         }
+      return null;
+   }
 
    //DISPLAYS ALL MEMBERS
    public ArrayList<String> getMembers() {
