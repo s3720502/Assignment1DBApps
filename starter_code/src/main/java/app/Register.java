@@ -1,7 +1,6 @@
 package app;
 
 //import java.util.ArrayList;
-
 import io.javalin.http.Context;
 import io.javalin.http.Handler;
 
@@ -18,7 +17,7 @@ public class Register implements Handler {
         //TESTING BRANCH
         /****** NEED TO ADD PROPER UPDATING/INSERT TO FBLMember TABLE ******/        
         String email = context.formParam("email");
-        if (email == null)
+        if (email == null || email == "")
         {
             html = html + "<h2><i>No Results to show for textbox</i></h2>\n";
         }
@@ -26,7 +25,7 @@ public class Register implements Handler {
             createUser(email);
         }
         String fullname = context.formParam("fullname");
-        if (fullname == null)
+        if (fullname == null || fullname == "")
         {
             html = html + "<h2><i>No Results to show for textbox</i></h2>\n";
         }
@@ -34,7 +33,7 @@ public class Register implements Handler {
             createUser(fullname);
         }
         String screenname = context.formParam("screename");
-        if (screenname == null)
+        if (screenname == null || screenname == "")
         {
             html = html + "<h2><i>No Results to show for textbox</i></h2>\n";
         }
@@ -42,7 +41,7 @@ public class Register implements Handler {
             createUser(screenname);
         }
         String dob = context.formParam("dob");
-        if (dob == null)
+        if (dob == null || dob == "")
         {
             html = html + "<h2><i>No Results to show for textbox</i></h2>\n";
         }
@@ -50,7 +49,7 @@ public class Register implements Handler {
             createUser(dob);
         }
         String gender = context.formParam("gender");
-        if (gender == null)
+        if (gender == null || gender == "")
         {
             html = html + "<h2><i>No Results to show for textbox</i></h2>\n";
         }
@@ -58,7 +57,7 @@ public class Register implements Handler {
             createUser(gender);
         }
         String status = context.formParam("status");
-        if (status == null)
+        if (status == null || status == "")
         {
             html = html + "<h2><i>No Results to show for textbox</i></h2>\n";
         }
