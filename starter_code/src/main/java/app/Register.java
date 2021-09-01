@@ -44,10 +44,22 @@ public class Register implements Handler {
         }
         createUser(email, fullname, screenname, dob, gender, status, location);
         
+        String password = context.formParam("password");
+        if (location == null || location == ""){
+            location = null;
+        }
+        createLogin(password, email);
+        
         // DO NOT MODIFY THIS
         // Makes Javalin render the webpage
         context.html(html);
         context.render("register.html");
+    }
+
+    public String createLogin(String password, String email){
+        JDBCConnection jdbc = JDBCConnection.getConnection();
+        jdbc.loginInsert(password, email);
+        return null;
     }
 
     public String createUser(String email, String fullname, String screenname, String dob, String gender, String status, String location) {
