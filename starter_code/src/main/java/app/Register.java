@@ -15,64 +15,36 @@ public class Register implements Handler {
         String html = "<html>\n";
 
         //TESTING BRANCH
-        /****** NEED TO ADD PROPER UPDATING/INSERT TO FBLMember TABLE ******/        
+        /****** INSERT WORKS NOW I JUST TO ADD NULL VERIFICATION ******/        
         String email = context.formParam("email");
-        if (email == null || email == "")
-        {
-            html = html + "<h2><i>No Results to show for textbox</i></h2>\n";
-        }
-        else{
-            createUser(email);
+        if (email == null || email == ""){
+            email = null;
         }
         String fullname = context.formParam("fullname");
-        if (fullname == null || fullname == "")
-        {
-            html = html + "<h2><i>No Results to show for textbox</i></h2>\n";
+        if (fullname == null || fullname == ""){
+            fullname = null;
         }
-        else{
-            createUser(fullname);
-        }
-        String screenname = context.formParam("screename");
-        if (screenname == null || screenname == "")
-        {
-            html = html + "<h2><i>No Results to show for textbox</i></h2>\n";
-        }
-        else{
-            createUser(screenname);
+        String screenname = context.formParam("screenname");
+        if (screenname == null || screenname == ""){
+            screenname = null;
         }
         String dob = context.formParam("dob");
-        if (dob == null || dob == "")
-        {
-            html = html + "<h2><i>No Results to show for textbox</i></h2>\n";
-        }
-        else{
-            createUser(dob);
+        if (dob == null || dob == ""){
+            dob = null;
         }
         String gender = context.formParam("gender");
-        if (gender == null || gender == "")
-        {
-            html = html + "<h2><i>No Results to show for textbox</i></h2>\n";
-        }
-        else{
-            createUser(gender);
+        if (gender == null || gender == ""){
+            gender = null;
         }
         String status = context.formParam("status");
-        if (status == null || status == "")
-        {
-            html = html + "<h2><i>No Results to show for textbox</i></h2>\n";
-        }
-        else{
-            createUser(status);
+        if (status == null || status == ""){
+            status = null;
         }
         String location = context.formParam("location");
-        if (location == null || location == "")
-        {
-            html = html + "<h2><i>No Results to show for textbox</i></h2>\n";
+        if (location == null || location == ""){
+            location = null;
         }
-        else{
-            createUser(location);
-        }
-        
+        createUser(email, fullname, screenname, dob, gender, status, location);
         
         // DO NOT MODIFY THIS
         // Makes Javalin render the webpage
@@ -80,9 +52,10 @@ public class Register implements Handler {
         context.render("register.html");
     }
 
-    public String createUser(String type) {
+    
+    public String createUser(String email, String fullname, String screenname, String dob, String gender, String status, String location) {
         JDBCConnection jdbc = JDBCConnection.getConnection();
-        jdbc.getRegister(type, type, type, type, type, type, type);
+        jdbc.getRegister(email, fullname, screenname, dob, gender, status, location);
         return null;
     }
 }
