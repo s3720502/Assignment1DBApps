@@ -76,30 +76,7 @@ public class JDBCConnection {
       }
    }
 
-   /**** REGISTRATION ATTEMPT 1 ****/
-   // public String getRegister(String email, String fullname, String screenname, String dob, String gender, String status, String location){
-   //    String register = new String();
-   //    try {
-   //       Statement statement = connection.createStatement();
-   //       statement.setQueryTimeout(30);
-         
-   //       String sql = "INSERT INTO FBLMembers (EMAIL, FULLNAME, SCREENNAME, DOB, GENDER, STATUS, LOCATION)"
-   //       + "\n" + "VALUES ('" + email + "','" + fullname + "','" + screenname + "',TO_DATE('" + dob + "','YYYY-MM-DD'),'" + gender + "','" + status + "','" + location + "')";
-            
-   //       System.out.println(sql);
-
-   //       statement.executeUpdate(sql);
-
-   //       statement.close();
-
-   //    } catch (SQLException e) {
-   //       System.err.println(e.getMessage());
-   //    }
-   //    return register;
-   // }
-
-
-   /**** REGISTRATION ATTEMP 2 ****/
+   /**** REGISTRATION/CREATE NEW USER ****/
    public String getRegister(String email, String fullname, String screenname, String dob, String gender, String status, String location) {
 
          try {

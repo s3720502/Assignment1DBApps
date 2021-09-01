@@ -1,6 +1,5 @@
 package app;
 
-//import java.util.ArrayList;
 import io.javalin.http.Context;
 import io.javalin.http.Handler;
 
@@ -14,7 +13,6 @@ public class Register implements Handler {
         // Create a simple HTML webpage in a String
         String html = "<html>\n";
 
-        //TESTING BRANCH
         /****** INSERT WORKS NOW I JUST TO ADD NULL VERIFICATION ******/        
         String email = context.formParam("email");
         if (email == null || email == ""){
@@ -52,7 +50,6 @@ public class Register implements Handler {
         context.render("register.html");
     }
 
-    
     public String createUser(String email, String fullname, String screenname, String dob, String gender, String status, String location) {
         JDBCConnection jdbc = JDBCConnection.getConnection();
         jdbc.getRegister(email, fullname, screenname, dob, gender, status, location);
