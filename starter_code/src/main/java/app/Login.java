@@ -24,7 +24,7 @@ public class Login implements Handler {
         html = html + "<body>\n";
 
         // Add HTML for the logo.png image
-        html = html + "<img src='logo.png' height='200px'/>\n";
+        html = html + "<img src='logo.png' height='100px'/>\n";
 
         // Add HTML for the list of pages
         html = html + "<h1>Login</h1>" + "<ul>\n";

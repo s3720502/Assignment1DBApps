@@ -8,21 +8,30 @@ body
 	color: #000000;
 	background-color: #a7a7ce;
 	font: 1em/1.2 "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif;
-	position: center;
+	position: fixed;
 	text-align: center;
+	border-right: 50px solid red;
+	border-left: 50px solid red;
+	width: 2560;
+	height: 1440;
 }
 
 .center {
-	margin: -5%;
+	margin: -10%;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-	position: center;
+	position: left;
 
 }
 
 h1
 {
-	margin: 3%;
-	background: yellow;
+	margin: 6%;
+	background: white;
+	border-color: black;
+	border-style: solid;
+	border-width: 3;
 }
+
+
