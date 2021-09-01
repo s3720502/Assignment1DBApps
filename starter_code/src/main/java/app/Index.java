@@ -26,7 +26,7 @@ public class Index implements Handler {
       html = html + "<head>" + "<title>Homepage</title>\n";
 
       // Add some CSS (external file)
-      html = html + "<link rel='stylesheet' type='text/css' href='common.css' />\n";
+      html = html + "<link rel='stylesheet' type='text/css' href='Index.css' />\n";
 
       // Add the body
       html = html + "<body>\n";

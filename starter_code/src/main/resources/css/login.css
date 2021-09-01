@@ -5,11 +5,10 @@ Base styles
 body
 {
 	margin: 0%;
-	padding: 0;
 	color: #000000;
 	background-color: #a7a7ce;
 	font: 1em/1.2 "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif;
-	position: top;
+	position: center;
 	text-align: center;
 }
 
@@ -17,8 +16,13 @@ body
 	margin: -5%;
 	display: block;
 	margin-left: auto;
-	position: center;
 	margin-right: auto;
 	position: center;
 
+}
+
+h1
+{
+	margin: 3%;
+	background: yellow;
 }
