@@ -68,6 +68,7 @@ public class MemberPage implements Handler {
       // DO NOT MODIFY THIS
       // Makes Javalin render the webpage
       context.html(html);
+      context.render("memberpage.html");
    }
 
 }
