@@ -5,10 +5,13 @@ Base styles
 body
 {
 	margin: 0%;
+	background: yellow;
+	padding: 0;
+	border-top-color: blue;
 	color: #000000;
 	background-color: #a7a7ce;
 	font: 1em/1.2 "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif;
-	position: fixed;
+	position: center;
 	text-align: center;
 	border-right: 50px solid red;
 	border-left: 50px solid red;
@@ -17,11 +20,11 @@ body
 }
 
 .center {
-	margin: -10%;
+	margin: -5%;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-	position: left;
+	position: center;
 
 }
 
@@ -33,5 +36,3 @@ h1
 	border-style: solid;
 	border-width: 3;
 }
-
-

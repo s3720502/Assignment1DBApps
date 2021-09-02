@@ -26,13 +26,13 @@ public class Index implements Handler {
       html = html + "<head>" + "<title>Homepage</title>\n";
 
       // Add some CSS (external file)
-      html = html + "<link rel='stylesheet' type='text/css' href='common.css' />\n";
+      html = html + "<link rel='stylesheet' type='text/css' href='Index.css' />\n";
 
       // Add the body
       html = html + "<body>\n";
 
       // Add HTML for the logo.png image
-      html = html + "<img src='logo.png' height='200px'/>\n";
+      html = html + "<img src='logo.png' height='100px'/>\n";
 
       // Add HTML for the list of pages
       html = html + "<h1>Homepage</h1>" + "<p>Links to sub-pages</p>" + "<ul>\n";

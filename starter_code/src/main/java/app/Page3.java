@@ -21,6 +21,7 @@ public class Page3 implements Handler {
 
    // URL of this page relative to http://localhost:7000/
    public static final String URL = "/page3.html";
+   
 
    // Name of the Thymeleaf HTML template page in the resources folder
    private static final String TEMPLATE = ("page3.html");
