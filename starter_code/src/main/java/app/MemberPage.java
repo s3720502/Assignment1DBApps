@@ -16,11 +16,14 @@ import io.javalin.http.Handler;
  * @author Santha Sumanasekara, 2021. email: santha.sumanasekara@rmit.edu.au
  * @author Halil Ali, 2021. email: halil.ali@rmit.edu.au
  */
-public class Page4 implements Handler {
+public class MemberPage implements Handler {
 
    // URL of this page relative to http://localhost:7000/
-   public static final String URL = "/page4.html";
+   public static final String URL = "/memberpage.html";
 
+   //THIS PAGE WILL DISPLAY ALL MEMBER DETAILS
+
+   //IT WILL ALSO UPDATE A USERS DETAILS
    @Override
    public void handle(Context context) throws Exception {
       // Create a simple HTML webpage in a String

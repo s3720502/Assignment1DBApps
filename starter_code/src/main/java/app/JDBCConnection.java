@@ -105,7 +105,7 @@ public class JDBCConnection {
    return null;
    }
 
-   /**** PASSWORD INSERT ****/
+   /**** USER PASSWORD INSERT ****/
    public String loginInsert(String password, String email){
       
       try{
@@ -129,7 +129,7 @@ public class JDBCConnection {
    }
 
 
-   //DISPLAYS ALL MEMBERS
+   //DISPLAYS ALL MEMBERS (This one was a test function)
    public ArrayList<String> getMembers() {
       ArrayList<String> members = new ArrayList<String>();
 
