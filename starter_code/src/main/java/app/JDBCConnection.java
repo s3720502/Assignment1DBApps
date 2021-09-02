@@ -128,7 +128,46 @@ public class JDBCConnection {
       return null;
    }
 
+   //DISPLAY A MEMBERS DETAILS
+   public ArrayList<String> getMemDetails(String email){
+      ArrayList<String> memberDetails = new ArrayList<String>();
 
+      try{
+         PreparedStatement ps = connection.prepareStatement("SELECT * FROM FBLMembers WHERE email = ?");
+         ps.setQueryTimeout(30);
+
+         ps.setString(1, email);
+
+         ResultSet results = ps.executeQuery();
+
+         while (results.next()){
+            String memEmail = results.getString("email");
+            String memFullName = results.getString("fullname");
+            String memScreenName = results.getString("screenname");
+            String memDOB = results.getString("dob");
+            String memGender = results.getString("gender");
+            String memStatus = results.getString("status");
+            String memLocation = results.getString("location");
+            String memVis = results.getString("visiibility");
+
+            memberDetails.add(memEmail);
+            memberDetails.add(memFullName);
+            memberDetails.add(memScreenName);
+            memberDetails.add(memDOB);
+            memberDetails.add(memGender);
+            memberDetails.add(memStatus);
+            memberDetails.add(memLocation);
+            memberDetails.add(memVis);
+         }
+
+         ps.close();
+         
+      }catch (SQLException e) {
+         // If there is an error, lets just print the error
+         System.err.println(e.getMessage());
+      }
+      return memberDetails;
+   }  
    //DISPLAYS ALL MEMBERS (This one was a test function)
    public ArrayList<String> getMembers() {
       ArrayList<String> members = new ArrayList<String>();

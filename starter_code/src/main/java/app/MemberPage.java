@@ -28,45 +28,22 @@ public class MemberPage implements Handler {
    public void handle(Context context) throws Exception {
       // Create a simple HTML webpage in a String
       String html = "<html>\n";
-
-      // Add some Header information
-      html = html + "<head>" + "<title>Page 4: All Movies</title>\n";
-
-      // Add some CSS (external file)
-      html = html + "<link rel='stylesheet' type='text/css' href='Page4.css' />\n";
-
-      // Add the body
-      html = html + "<body>\n";
-
-      // Add HTML for link back to the homepage
-      html = html + "<h1>Page 4: All Movies</h1>\n";
-      html = html + "<p>Return to Homepage: \n";
-      html = html + "<a href='/'>Link to Homepage</a>\n";
-      html = html + "</p>\n";
-
       // Look up some information from JDBC
       // First we need to use your JDBCConnection class
+
+      String email = context.formParam("membemail");
+        if (email == null || email == ""){
+            email = null;
+        }
       JDBCConnection jdbc = JDBCConnection.getConnection();
 
       // Next we will ask this *class* for the movies
-      ArrayList<String> movies = jdbc.getMembers();
+      ArrayList<String> memDetails = jdbc.getMemDetails(email);
 
-      // Add HTML for the movies list
-      html = html + "<h1>Movies</h1>" + "<ul>\n";
-
-      // Finally we can print out all of the movies
-      for (String movie : movies) {
-         html = html + "<li>" + movie + "</li>\n";
+      for (String memDeets : memDetails){
+         html = html + "<li>" + memDeets + "</li>\n";
       }
 
-      // Finish the List HTML
-      html = html + "</ul>\n";
-
-      // Finish the HTML webpage
-      html = html + "</body>" + "</html>\n";
-
-      // DO NOT MODIFY THIS
-      // Makes Javalin render the webpage
       context.html(html);
       context.render("memberpage.html");
    }
