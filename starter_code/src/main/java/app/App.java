@@ -83,11 +83,12 @@ public class App {
       // All webpages are listed here as GET pages
       app.get(Login.URL, new Login());
       app.get(Register.URL, new Register());
+      app.get(MemberPage.URL, new MemberPage());
+      app.get(UpdateDetails.URL, new UpdateDetails());
       app.get(Index.URL, new Index());
       app.get(Page1.URL, new Page1());
       app.get(Page2.URL, new Page2());
       app.get(Page3.URL, new Page3());
-      app.get(MemberPage.URL, new MemberPage());
       app.get(Posts.URL, new Posts());
       app.get(Page6.URL, new Page6());
 
@@ -95,6 +96,7 @@ public class App {
       // app.post(Index.URL, new Index());
       // app.post(Page1.URL, new Page1());
       app.post(Register.URL, new Register());
+      app.post(MemberPage.URL, new MemberPage());
       app.post(Page2.URL, new Page2());
       app.post(Page3.URL, new Page3());
       // app.post(Page4.URL, new Page4());

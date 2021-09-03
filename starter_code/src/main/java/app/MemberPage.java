@@ -22,30 +22,60 @@ public class MemberPage implements Handler {
    public static final String URL = "/memberpage.html";
 
    //THIS PAGE WILL DISPLAY ALL MEMBER DETAILS
-
-   //IT WILL ALSO UPDATE A USERS DETAILS
    @Override
    public void handle(Context context) throws Exception {
       // Create a simple HTML webpage in a String
       String html = "<html>\n";
-      // Look up some information from JDBC
-      // First we need to use your JDBCConnection class
+
+      html = html + "<head>" + "<title>Member Details</title>\n";
+
+      html = html + "<link rel='stylesheet' type='text/css' href='common.css' />\n";
+
+      html = html + "<body>\n";
+
+      html = html + "<form action='/memberpage.html' method='post'>\n";
+      html = html + "   <h1>Enter Email and Full name:</h1>\n";
+      html = html + "   <div class='memberDetails'>\n";
+      html = html + "      <label for='email'>Email:</label>\n";
+      html = html + "      <input type='text' id='membemail' name='membemail' required><br><br>\n";
+      html = html + "   </div>\n";
+      html = html + "   <div>\n";
+      html = html + "      <label for='fullname'>Full Name:</label>\n";
+      html = html + "      <input type'text' id='fullname' name='fullname' required><br><br>\n";
+      html = html + "   </div>\n";
+      html = html + "   <button type='submit' class='btn btn-primary'>Get Details</button>\n";
+      html = html + "</form>\n";
+
 
       String email = context.formParam("membemail");
         if (email == null || email == ""){
-            email = null;
+         html = html + "<h2><i>No Results to show for textbox</i></h2>\n";
         }
+        else{
+         html = html + outputDetails(email);
+        }
+      
+      html = html + "<p>Return to Homepage: \n";
+      html = html + "<a href='/'>Link to Homepage</a>\n";
+      html = html + "</p>\n";
+      
+      html = html + "</body>" + "</html>\n";
+      context.html(html);
+   }
+
+   public String outputDetails(String email){
+      String html = "";
+      html = html + "<h2>Your Member Details</h2>\n";
+
       JDBCConnection jdbc = JDBCConnection.getConnection();
-
-      // Next we will ask this *class* for the movies
       ArrayList<String> memDetails = jdbc.getMemDetails(email);
-
+   
+      html = html + "<ul>";
       for (String memDeets : memDetails){
          html = html + "<li>" + memDeets + "</li>\n";
       }
+      html = html + "</ul>";
 
-      context.html(html);
-      context.render("memberpage.html");
+      return html;
    }
-
 }
