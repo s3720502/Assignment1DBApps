@@ -163,11 +163,39 @@ public class JDBCConnection {
          ps.close();
          
       }catch (SQLException e) {
-         // If there is an error, lets just print the error
          System.err.println(e.getMessage());
       }
       return memberDetails;
-   }  
+   }
+
+   //UPDATE DETAILS OF A MEMBER
+   //UPDATES STATUS, VISIBILITY, AND SCREENNAME
+   public String updateDetails(String screenname, String status, String visi, String email){
+      
+      try{
+         PreparedStatement ps = connection.prepareStatement("UPDATE FBLMembers SET screenname = ?, status =  ?, visiibility = ? WHERE email = ?");
+         ps.setQueryTimeout(30);
+
+         ps.setString(1, screenname);
+         ps.setString(2, status);
+         ps.setString(3, visi);
+         ps.setString(4, email);
+
+         int x =  ps.executeUpdate();
+
+         if(x>0){
+            System.out.println("Details Updated Successfully!");
+         }else{
+            System.out.println("Details Not Updated...");
+         }
+
+      }catch (SQLException e) {
+         System.err.println(e.getMessage());
+      }
+      return null;
+   }
+
+
    //DISPLAYS ALL MEMBERS (This one was a test function)
    public ArrayList<String> getMembers() {
       ArrayList<String> members = new ArrayList<String>();

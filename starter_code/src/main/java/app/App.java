@@ -97,6 +97,7 @@ public class App {
       // app.post(Page1.URL, new Page1());
       app.post(Register.URL, new Register());
       app.post(MemberPage.URL, new MemberPage());
+      app.post(UpdateDetails.URL, new UpdateDetails());
       app.post(Page2.URL, new Page2());
       app.post(Page3.URL, new Page3());
       // app.post(Page4.URL, new Page4());

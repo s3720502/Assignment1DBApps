@@ -40,7 +40,7 @@ public class Index implements Handler {
       // Link for each page
       html = html + "<li> <a href='register.html'>Register</a> </li>\n";
       html = html + "<li> <a href='memberpage.html'>Member Details</a> </li>\n";
-      html = html + "<li> <a href='updatedetails.html'>Member Details</a> </li>\n";
+      html = html + "<li> <a href='updatedetails.html'>Update Details</a> </li>\n";
       html = html + "<li> <a href='page1.html'>Page 1</a> </li>\n";
       html = html + "<li> <a href='page2.html'>Page 2</a> </li>\n";
       html = html + "<li> <a href='page3.html'>Page 3</a> </li>\n";
