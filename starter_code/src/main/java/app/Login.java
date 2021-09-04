@@ -55,6 +55,7 @@ public class Login implements Handler {
         // DO NOT MODIFY THIS
         // Makes Javalin render the webpage
         context.html(html);
+        //context.sessionAttribute(key, value);
     }
 
     public String loginUser(String type) {

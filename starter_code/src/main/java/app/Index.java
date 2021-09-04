@@ -47,6 +47,8 @@ public class Index implements Handler {
       html = html + "<li> <a href='page4.html'>Page 4</a> </li>\n";
       html = html + "<li> <a href='page5.html'>Page 5</a> </li>\n";
       html = html + "<li> <a href='page6.html'>Page 6</a> </li>\n";
+      html = html + "<li> <a href='posts.html'>Posts</a> </li>\n";
+      html = html + "<li> <a href='postdisplay.html'>All Posts</a> </li>\n";
 
       // Finish the List HTML
       html = html + "</ul>\n";
