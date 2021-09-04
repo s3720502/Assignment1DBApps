@@ -304,4 +304,31 @@ public class JDBCConnection {
 
       return null;
    }
+
+   public ArrayList<String> displayPosts(){
+      ArrayList<String> disPosts = new ArrayList<String>();
+
+      try{
+         PreparedStatement ps = connection.prepareStatement("SELECT CONTENT, POSTEREMAIL, POSTTIMESTAMP FROM FBLPosts");
+         ps.setQueryTimeout(30);
+
+         ResultSet results = ps.executeQuery();
+
+         while (results.next()){
+            String postContent = results.getString("content");
+            String postEmail = results.getString("posteremail");
+            String postTime = results.getString("posttimestamp");
+
+            disPosts.add(postContent);
+            disPosts.add(postEmail);
+            disPosts.add(postTime);
+         }
+
+         ps.close();
+         
+      }catch (SQLException e) {
+         System.err.println(e.getMessage());
+      }
+      return disPosts;
+   }
 }

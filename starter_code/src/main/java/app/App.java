@@ -89,6 +89,7 @@ public class App {
       app.get(Page3.URL, new Page3());
       app.get(MemberPage.URL, new MemberPage());
       app.get(Posts.URL, new Posts());
+      app.get(PostsDisplay.URL, new PostsDisplay());
       app.get(Page6.URL, new Page6());
 
       // Add / uncomment POST commands for any pages that need web form POSTS
@@ -98,6 +99,7 @@ public class App {
       app.post(Page2.URL, new Page2());
       app.post(Page3.URL, new Page3());
       app.post(Posts.URL, new Posts());
+      app.post(PostsDisplay.URL, new PostsDisplay());
       // app.post(Page4.URL, new Page4());
       // app.post(Page5.URL, new Page5());
       // app.post(Page6.URL, new Page6());
