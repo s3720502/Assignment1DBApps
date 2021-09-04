@@ -38,12 +38,17 @@ public class Index implements Handler {
       html = html + "<h1>Homepage</h1>" + "<p>Links to sub-pages</p>" + "<ul>\n";
 
       // Link for each page
+      html = html + "<li> <a href='register.html'>Register</a> </li>\n";
+      html = html + "<li> <a href='memberpage.html'>Member Details</a> </li>\n";
+      html = html + "<li> <a href='updatedetails.html'>Update Details</a> </li>\n";
       html = html + "<li> <a href='page1.html'>Page 1</a> </li>\n";
       html = html + "<li> <a href='page2.html'>Page 2</a> </li>\n";
       html = html + "<li> <a href='page3.html'>Page 3</a> </li>\n";
       html = html + "<li> <a href='page4.html'>Page 4</a> </li>\n";
       html = html + "<li> <a href='page5.html'>Page 5</a> </li>\n";
       html = html + "<li> <a href='page6.html'>Page 6</a> </li>\n";
+      html = html + "<li> <a href='posts.html'>Posts</a> </li>\n";
+      html = html + "<li> <a href='postdisplay.html'>All Posts</a> </li>\n";
 
       // Finish the List HTML
       html = html + "</ul>\n";

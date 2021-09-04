@@ -6,7 +6,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-//import java.sql.PreparedStatement;
+//import java.sql.Timestamp;
+import java.sql.PreparedStatement;
+//import java.time.LocalDateTime;
 
 /**
  * Class for Managing the JDBC Connection to a SQLLite Database. Allows SQL
@@ -76,50 +78,127 @@ public class JDBCConnection {
       }
    }
 
-   /**** REGISTRATION ATTEMP 1 ****/
-   public String getRegister(String email, String fullname, String screenname, String dob, String gender, String status, String location, String visiibility){
-      String register = new String();
+   /**** REGISTRATION/CREATE NEW USER ****/
+   public String getRegister(String email, String fullname, String screenname, String dob, String gender, String status, String location) {
+
       try {
-         Statement statement = connection.createStatement();
-         statement.setQueryTimeout(30);
-         
-         String sql = "INSERT INTO FBLMembers (EMAIL, FULLNAME, SCREENNAME, DOB, GENDER, STATUS, LOCATION)"
-         + "\n" + "VALUES ('" + email + "','" + fullname + "','" + screenname + "',TO_DATE('" + dob + "','YYYY-MM-DD'),'" + gender + "','" + status + "','" + location + "')";
+         PreparedStatement ps = connection.prepareStatement("INSERT INTO FBLMembers (EMAIL, FULLNAME, SCREENNAME, DOB, GENDER, STATUS, LOCATION) VALUES (?,?,?,TO_DATE(?, 'YYYY-MM-DD'),?,?,?)");
+         ps.setQueryTimeout(30);
+
+         ps.setString(1, email);
+         ps.setString(2, fullname);
+         ps.setString(3, screenname);
+         ps.setString(4, dob);
+         ps.setString(5, gender);
+         ps.setString(6, status);
+         ps.setString(7, location);
+
+         int x = ps.executeUpdate();
             
-         System.out.println(sql);
-
-         statement.executeUpdate(sql);
-
-         statement.close();
+         if(x > 0){
+            System.out.println("Registration Successful!");
+         } else{
+            System.out.println("Registration Unsuccessful");
+         }
 
       } catch (SQLException e) {
          System.err.println(e.getMessage());
       }
-      return register;
+   return null;
    }
-   /**** REGISTRATION ATTEMP 2 ****/
-   // public ArrayList<String> getRegister(String email, String fullname, String screenname, String dob, String gender, String status, String location, String visi) {
-   //    ArrayList<String> register = new ArrayList<String>();     
-   //       try {
-   //          Statement statement = connection.createStatement();
-   //          statement.setQueryTimeout(30);
 
-   //          String sql = "INSERT INTO FBLMembers (EMAIL, FULLNAME, SCREENNAME, DOB, GENDER, STATUS, LOCATION)"
-   //          + "\n" + "VALUES ('" + email + "','" + fullname + "','" + screenname + "',TO_DATE('" + dob + "','YYYY-MM-DD'),'" + gender + "','" + status + "','" + location + "');";
-            
-   //          System.out.println(sql);
+   /**** USER PASSWORD INSERT ****/
+   public String loginInsert(String password, String email){
+      
+      try{
+         PreparedStatement ps = connection.prepareStatement("INSERT INTO PASSWORDS (PASSWORD, EMAIL) VALUES (?,?)");
+         ps.setQueryTimeout(30);
 
-   //          statement.executeUpdate(sql);
+         ps.setString(1, password);
+         ps.setString(2, email);
 
-   //          statement.close();
+         int x = ps.executeUpdate();
 
-   //       } catch (SQLException e) {
-   //          System.err.println(e.getMessage());
-   //       }
-   //    return register;
-   // }
+         if(x > 0){
+            System.out.println("Registration Successful!");
+         } else{
+            System.out.println("Registration Unsuccessful");
+         }
+      }catch (SQLException e) {
+         System.err.println(e.getMessage());
+      }
+      return null;
+   }
 
-   //DISPLAYS ALL MEMBERS
+   //DISPLAY A MEMBERS DETAILS
+   public ArrayList<String> getMemDetails(String email){
+      ArrayList<String> memberDetails = new ArrayList<String>();
+
+      try{
+         PreparedStatement ps = connection.prepareStatement("SELECT * FROM FBLMembers WHERE email = ?");
+         ps.setQueryTimeout(30);
+
+         ps.setString(1, email);
+
+         ResultSet results = ps.executeQuery();
+
+         while (results.next()){
+            String memEmail = results.getString("email");
+            String memFullName = results.getString("fullname");
+            String memScreenName = results.getString("screenname");
+            String memDOB = results.getString("dob");
+            String memGender = results.getString("gender");
+            String memStatus = results.getString("status");
+            String memLocation = results.getString("location");
+            String memVis = results.getString("visiibility");
+
+            memberDetails.add(memEmail);
+            memberDetails.add(memFullName);
+            memberDetails.add(memScreenName);
+            memberDetails.add(memDOB);
+            memberDetails.add(memGender);
+            memberDetails.add(memStatus);
+            memberDetails.add(memLocation);
+            memberDetails.add(memVis);
+         }
+
+         ps.close();
+         
+      }catch (SQLException e) {
+         System.err.println(e.getMessage());
+      }
+      return memberDetails;
+   }
+
+   //UPDATE DETAILS OF A MEMBER
+   //UPDATES STATUS, VISIBILITY, AND SCREENNAME
+   public String updateDetails(String screenname, String status, String visi, String email){
+      
+      try{
+         PreparedStatement ps = connection.prepareStatement("UPDATE FBLMembers SET screenname = ?, status =  ?, visiibility = ? WHERE email = ?");
+         ps.setQueryTimeout(30);
+
+         ps.setString(1, screenname);
+         ps.setString(2, status);
+         ps.setString(3, visi);
+         ps.setString(4, email);
+
+         int x =  ps.executeUpdate();
+
+         if(x>0){
+            System.out.println("Details Updated Successfully!");
+         }else{
+            System.out.println("Details Not Updated...");
+         }
+
+      }catch (SQLException e) {
+         System.err.println(e.getMessage());
+      }
+      return null;
+   }
+
+
+   //DISPLAYS ALL MEMBERS (This one was a test function)
    public ArrayList<String> getMembers() {
       ArrayList<String> members = new ArrayList<String>();
 
@@ -264,5 +343,59 @@ public class JDBCConnection {
 
       // Finally we return all of the movies
       return movies;
+   }
+
+   public String insertPosts(String postID, String content, String posttime, String parpostID, String postemail){
+
+      try{
+         PreparedStatement ps = connection.prepareStatement("INSERT INTO FBLPosts (POSTID, CONTENT, POSTTIMESTAMP, PARENTPOSTID, POSTEREMAIL) VALUES (?,?,TO_TIMESTAMP(?, 'yyyy-MM-dd HH24:mi:ss'),?,?)");
+         ps.setQueryTimeout(30);
+
+         ps.setString(1, postID);
+         ps.setString(2, content);
+         ps.setString(3, posttime);
+         ps.setString(4, parpostID);
+         ps.setString(5, postemail);
+
+         int x = ps.executeUpdate();
+            
+         if(x > 0){
+            System.out.println("Post Insertion Successful!");
+         } else{
+            System.out.println("Post Insertion Unsuccessful...");
+         }
+
+      }catch (SQLException e) {
+         System.err.println(e.getMessage());
+      }
+
+      return null;
+   }
+
+   public ArrayList<String> displayPosts(){
+      ArrayList<String> disPosts = new ArrayList<String>();
+
+      try{
+         PreparedStatement ps = connection.prepareStatement("SELECT CONTENT, POSTEREMAIL, POSTTIMESTAMP FROM FBLPosts");
+         ps.setQueryTimeout(30);
+
+         ResultSet results = ps.executeQuery();
+
+         while (results.next()){
+            String postContent = results.getString("content");
+            String postEmail = results.getString("posteremail");
+            String postTime = results.getString("posttimestamp");
+
+            disPosts.add(postContent);
+            disPosts.add(postEmail);
+            disPosts.add(postTime);
+         }
+
+         ps.close();
+         
+      }catch (SQLException e) {
+         System.err.println(e.getMessage());
+      }
+      return disPosts;
    }
 }

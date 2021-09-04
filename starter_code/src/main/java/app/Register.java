@@ -1,35 +1,54 @@
 package app;
 
-//import java.util.ArrayList;
-
 import io.javalin.http.Context;
 import io.javalin.http.Handler;
 
 public class Register implements Handler {
     // URL of this page relative to http://localhost:7000/
     public static final String URL = "/register.html";
+    JDBCConnection jdbc = JDBCConnection.getConnection();
 
     @Override
     public void handle(Context context) throws Exception {
         // Create a simple HTML webpage in a String
         String html = "<html>\n";
 
-        /****** NEED TO ADD PROPER UPDATING/INSERT TO FBLMember TABLE ******/        
+        /****** INSERT WORKS NOW I JUST TO ADD NULL VERIFICATION ******/        
         String email = context.formParam("email");
-        createUser(email);
+        if (email == null || email == ""){
+            email = null;
+        }
         String fullname = context.formParam("fullname");
-        createUser(fullname);
-        String screenname = context.formParam("screename");
-        createUser(screenname);
+        if (fullname == null || fullname == ""){
+            fullname = null;
+        }
+        String screenname = context.formParam("screenname");
+        if (screenname == null || screenname == ""){
+            screenname = null;
+        }
         String dob = context.formParam("dob");
-        createUser(dob);
+        if (dob == null || dob == ""){
+            dob = null;
+        }
         String gender = context.formParam("gender");
-        createUser(gender);
+        if (gender == null || gender == ""){
+            gender = null;
+        }
         String status = context.formParam("status");
-        createUser(status);
+        if (status == null || status == ""){
+            status = null;
+        }
         String location = context.formParam("location");
-        createUser(location);
+        if (location == null || location == ""){
+            location = null;
+        }
+        createUser(email, fullname, screenname, dob, gender, status, location);
         
+        String password = context.formParam("password");
+        if (location == null || location == ""){
+            location = null;
+        }
+        createLogin(password, email);
         
         // DO NOT MODIFY THIS
         // Makes Javalin render the webpage
@@ -37,10 +56,15 @@ public class Register implements Handler {
         context.render("register.html");
     }
 
-    public String createUser(String type) {
+    public String createLogin(String password, String email){
         JDBCConnection jdbc = JDBCConnection.getConnection();
-        String register = jdbc.getRegister(type, type, type, type, type, type, type, type); 
-        
-        return register.toString();
+        jdbc.loginInsert(password, email);
+        return null;
+    }
+
+    public String createUser(String email, String fullname, String screenname, String dob, String gender, String status, String location) {
+        JDBCConnection jdbc = JDBCConnection.getConnection();
+        jdbc.getRegister(email, fullname, screenname, dob, gender, status, location);
+        return null;
     }
 }
