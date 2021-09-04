@@ -1,72 +1,54 @@
 package app;
 
-import java.util.ArrayList;
-
 import io.javalin.http.Context;
 import io.javalin.http.Handler;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
-/**
- * Temporary HTML as an example page.
- * 
- * Based on the Project Workshop code examples. This page currently: - Provides
- * a link back to the index page - Displays the list of movies from the Movies
- * Database using the JDBCConnection
- *
- * @author Timothy Wiley, 2021. email: timothy.wiley@rmit.edu.au
- * @author Santha Sumanasekara, 2021. email: santha.sumanasekara@rmit.edu.au
- * @author Halil Ali, 2021. email: halil.ali@rmit.edu.au
- */
 public class Posts implements Handler {
 
    // URL of this page relative to http://localhost:7000/
    public static final String URL = "/posts.html";
-   
+   private static final SimpleDateFormat sdf3 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
    //THIS PAGE WILL HANDLE THE POSTS INSERTION
 
    @Override
    public void handle(Context context) throws Exception {
-      // Create a simple HTML webpage in a String
-      String html = "<html>\n";
+      String html = "";
 
-      // Add some Header information
-      html = html + "<head>" + "<title>Page 5: All Movies</title>\n";
+      Timestamp ts = new Timestamp(System.currentTimeMillis());
 
-      // Add some CSS (external file)
-      html = html + "<link rel='stylesheet' type='text/css' href='Page5.css' />\n";
+      System.out.println(ts);
 
-      // Add the body
-      html = html + "<body>\n";
-
-      // Add HTML for link back to the homepage
-      html = html + "<h1>Page 5: All Movies</h1>\n";
-      html = html + "<p>Return to Homepage: \n";
-      html = html + "<a href='/'>Link to Homepage</a>\n";
-      html = html + "</p>\n";
-
-      // Look up some information from JDBC
-      // First we need to use your JDBCConnection class
-      JDBCConnection jdbc = JDBCConnection.getConnection();
-
-      // Next we will ask this *class* for the movies
-      ArrayList<String> movies = jdbc.getMembers();
-
-      // Add HTML for the movies list
-      html = html + "<h1>Movies</h1>" + "<ul>\n";
-
-      // Finally we can print out all of the movies
-      for (String movie : movies) {
-         html = html + "<li>" + movie + "</li>\n";
+      String postID = context.formParam("postid");
+      if (postID == null || postID == ""){
+          postID = null;
+      }
+      String content = context.formParam("content");
+      if (content == null || content == ""){
+          content = null;
+      }
+      String posttime = sdf3.format(ts);
+      String parpostID = context.formParam("postid");
+      if (parpostID == null || parpostID == ""){
+          parpostID = null;
+      }
+      String postemail = context.formParam("postemail");
+      if (postemail == null || postemail == ""){
+          postemail = null;
       }
 
-      // Finish the List HTML
-      html = html + "</ul>\n";
-
-      // Finish the HTML webpage
-      html = html + "</body>" + "</html>\n";
-
+      makePosts(postID, content, posttime, parpostID, postemail);
       // DO NOT MODIFY THIS
       // Makes Javalin render the webpage
       context.html(html);
+      context.render("posts.html");
+   }
+
+   public String makePosts(String postID, String content, String posttime, String parpostID, String postemail){
+      JDBCConnection jdbc = JDBCConnection.getConnection();
+      jdbc.insertPosts(postID, content, posttime, parpostID, postemail);
+      return null;
    }
 
 }

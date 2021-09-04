@@ -6,7 +6,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+//import java.sql.Timestamp;
 import java.sql.PreparedStatement;
+//import java.time.LocalDateTime;
 
 /**
  * Class for Managing the JDBC Connection to a SQLLite Database. Allows SQL
@@ -274,5 +276,32 @@ public class JDBCConnection {
 
       // Finally we return all of the movies
       return movies;
+   }
+
+   public String insertPosts(String postID, String content, String posttime, String parpostID, String postemail){
+
+      try{
+         PreparedStatement ps = connection.prepareStatement("INSERT INTO FBLPosts (POSTID, CONTENT, POSTTIMESTAMP, PARENTPOSTID, POSTEREMAIL) VALUES (?,?,TO_TIMESTAMP(?, 'yyyy-MM-dd HH24:mi:ss'),?,?)");
+         ps.setQueryTimeout(30);
+
+         ps.setString(1, postID);
+         ps.setString(2, content);
+         ps.setString(3, posttime);
+         ps.setString(4, parpostID);
+         ps.setString(5, postemail);
+
+         int x = ps.executeUpdate();
+            
+         if(x > 0){
+            System.out.println("Post Insertion Successful!");
+         } else{
+            System.out.println("Post Insertion Unsuccessful...");
+         }
+
+      }catch (SQLException e) {
+         System.err.println(e.getMessage());
+      }
+
+      return null;
    }
 }
