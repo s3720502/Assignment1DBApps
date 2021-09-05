@@ -27,7 +27,7 @@ public class Login implements Handler {
         html = html + "</div>\n";
 
         // Add some CSS (external file)
-        html = html + "<link rel='stylesheet' type='text/css' href='Login.css' />\n";
+        html = html + "<link rel='stylesheet' type='text/css' href='login.css' />\n";
 
         // Add the body
         html = html + "<body>\n";
