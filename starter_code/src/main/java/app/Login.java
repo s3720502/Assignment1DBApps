@@ -46,7 +46,7 @@ public class Login implements Handler {
         html = html +   "<input type='text' id='email' name='email'><br><br>";
         html = html +   "<label for='password'>Password:</label>";
         html = html +   "<input type='password' id='password' name='password'><br><br>";
-        html = html +   "<button type='submit' class='btn btn-primary'>Update Details</button>";
+        html = html +   "<button type='submit' class='btn btn-primary'>Login</button>";
         html = html + "</form>";
 
         // Finish the List HTML
