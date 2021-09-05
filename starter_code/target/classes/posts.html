@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+    <head> 
+        <title>Create a Post</title>
+        <link rel='stylesheet' type='text/css' href='common.css'/>
+        <body>
+            <h1>Create Posts</h1>
+            <form action='/posts.html'  method="post">
+                <div class=postemail>
+                    <label for='email'>Email:</label>
+                    <input type='text' id='postemail' name='postemail' required><br><br>
+                </div>
+                <div class=content>
+                    <label for='fullname'>Type Here:</label>
+                    <input type'text' id='content' name='content' required><br><br>
+                </div>
+                <div class=id>
+                    <label for='screenname'>Post ID:</label>
+                    <input type'text' id='postid' name='postid' required><br><br>
+                </div>
+                <button type='submit' class='btn btn-primary'>Post</button>
+                <p>
+                    <a href="/homepage.html">Return to Homepage</a>
+                </p>
+            </form>
+        </body>
+    </head>
+</html>
