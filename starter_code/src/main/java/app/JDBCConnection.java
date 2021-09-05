@@ -210,19 +210,11 @@ public class JDBCConnection {
 
          ResultSet results = statement.executeQuery(query);
 
-         // Process all of the results
-         // The "results" variable is similar to an array
-         // We can iterate through all of the database query results
-         while (results.next()) {
-            // We can lookup a column of the a single record in the
-            // result using the column name
-            // BUT, we must be careful of the column type!
-            // int id = results.getInt("mvnumb");
-            String memberName = results.getString("fullname");
-            // int year = results.getInt("yrmde");
-            // String type = results.getString("mvtype");
 
-            // For now we will just store the movieName and ignore the id
+         while (results.next()) {
+
+            String memberName = results.getString("fullname");
+
             members.add(memberName);
          }
          // Close the statement because we are done with it
@@ -264,26 +256,10 @@ public class JDBCConnection {
          
          ps.close();
 
-      
-
-      /*
-         //Test to see if the query functions correctly   
-         email = results.getString("email");
-         password = results.getString("password");
-         System.out.println(password); 
-         System.out.println(email);
-         System.out.println("LOGIN SUCCESSFUL");
-
-         login.add(password);
-         login.add(email);
-      */
-         // Close the statement because we are done with it
-         //ps.close();
-      
       } catch (SQLException e) {
          // If there is an error, lets just print the error
          System.err.println(e.getMessage());
-         System.out.println("LOGIN UNSUCCESSFUL TRY AGAIN");
+         System.out.println("Somethings not right!");
       }
 
       // Finally we return all of the movies
