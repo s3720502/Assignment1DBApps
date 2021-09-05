@@ -108,13 +108,13 @@ public class JDBCConnection {
    }
 
    /**** USER PASSWORD INSERT ****/
-   public String loginInsert(String password, String email){
+   public String loginInsert(String enpassword, String email){
       
       try{
          PreparedStatement ps = connection.prepareStatement("INSERT INTO PASSWORDS (PASSWORD, EMAIL) VALUES (?,?)");
          ps.setQueryTimeout(30);
 
-         ps.setString(1, password);
+         ps.setString(1, enpassword);
          ps.setString(2, email);
 
          int x = ps.executeUpdate();
