@@ -2,6 +2,7 @@ package app;
 
 import io.javalin.http.Context;
 import io.javalin.http.Handler;
+import java.util.Base64;
 
 public class Register implements Handler {
     // URL of this page relative to http://localhost:7000/
@@ -42,23 +43,33 @@ public class Register implements Handler {
         if (location == null || location == ""){
             location = null;
         }
+
         createUser(email, fullname, screenname, dob, gender, status, location);
         
         String password = context.formParam("password");
-        if (location == null || location == ""){
-            location = null;
+        if (password == null || password == ""){
+            password = "dummy";
         }
-        createLogin(password, email);
+        String enpassword = passEncrypt(password);
+        createLogin(enpassword, email);
         
+
         // DO NOT MODIFY THIS
         // Makes Javalin render the webpage
         context.html(html);
         context.render("register.html");
     }
 
-    public String createLogin(String password, String email){
+    public String passEncrypt(String password) throws Exception{
+        byte[] X= Base64.getEncoder().encode(password.getBytes());
+        String return_string = new String(X);
+
+        return return_string;
+    }
+    
+    public String createLogin(String enpassword, String email){
         JDBCConnection jdbc = JDBCConnection.getConnection();
-        jdbc.loginInsert(password, email);
+        jdbc.loginInsert(enpassword, email);
         return null;
     }
 

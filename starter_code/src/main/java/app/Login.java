@@ -41,10 +41,13 @@ public class Login implements Handler {
         // Includes Textfields for Email and Password
 
         /****** NEED TO ADD PROPER AUTHENTICATION ******/
-        html = html + "<form action='/homepage.html'>" + "<label for='email'>Email:</label>"
-                + "<input type='text' id='email' name='email'><br><br>" + "<label for='password'>Password:</label>"
-                + "<input type='password' id='password' name='password'><br><br>"
-                + "<input type='submit' value='Login'>" + "</form>";
+        html = html + "<form action='/homepage.html'>" ;
+        html = html +   "<label for='email'>Email:</label>";
+        html = html +   "<input type='text' id='email' name='email'><br><br>";
+        html = html +   "<label for='password'>Password:</label>";
+        html = html +   "<input type='password' id='password' name='password'><br><br>";
+        html = html +   "<button type='submit' class='btn btn-primary'>Update Details</button>";
+        html = html + "</form>";
 
         // Finish the List HTML
         html = html + "</ul>\n";
@@ -65,7 +68,7 @@ public class Login implements Handler {
         context.html(html);
         //context.sessionAttribute(key, value);
     }
-
+    
     public String loginUser(String type) {
         JDBCConnection jdbc = JDBCConnection.getConnection();
         ArrayList<String> login = jdbc.getLogin(type, type); 
