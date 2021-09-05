@@ -33,8 +33,8 @@ public class PostsDisplay implements Handler {
       }
       html = html + "</ul>";
 
-      html = html + "<p>Return to Homepage: \n";
-      html = html + "<a href='/homepage.html'>Link to Homepage</a>\n";
+      html = html + "<p>\n";
+      html = html + "   <a href='/homepage.html'>Return to Homepage</a>\n";
       html = html + "</p>\n";
       
       html = html + "</body>" + "</html>\n";

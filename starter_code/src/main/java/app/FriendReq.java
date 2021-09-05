@@ -42,7 +42,9 @@ public class FriendReq implements Handler {
         html = html + "</form>\n";
 
         // Add HTML for Linking to Register Page
-        html = html + "<a href='/homepage.html'>Return to Homepage</a>\n";
+        html = html + "<p>\n";
+        html = html + "   <a href='/homepage.html'>Return to Homepage</a>\n";
+        html = html + "</p>\n";
 
         // Finish the HTML webpage
         html = html + "</body>\n";

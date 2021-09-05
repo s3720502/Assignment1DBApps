@@ -16,10 +16,10 @@ import io.javalin.http.Handler;
  * @author Santha Sumanasekara, 2021. email: santha.sumanasekara@rmit.edu.au
  * @author Halil Ali, 2021. email: halil.ali@rmit.edu.au
  */
-public class Page1 implements Handler {
+public class DisplayMembs implements Handler {
 
    // URL of this page relative to http://localhost:7000/
-   public static final String URL = "/page1.html";
+   public static final String URL = "/displaymembs.html";
 
    @Override
    public void handle(Context context) throws Exception {
@@ -27,7 +27,7 @@ public class Page1 implements Handler {
       String html = "<html>\n";
 
       // Add some Header information
-      html = html + "<head>" + "<title>Page 1: All Movies</title>\n";
+      html = html + "<head>" + "<title>All Members</title>\n";
 
       // Add some CSS (external file)
       html = html + "<link rel='stylesheet' type='text/css' href='Page1.css' />\n";
@@ -36,9 +36,8 @@ public class Page1 implements Handler {
       html = html + "<body>\n";
 
       // Add HTML for link back to the homepage
-      html = html + "<h1>Page 1: All Movies</h1>\n";
-      html = html + "<p>Return to Homepage: \n";
-      html = html + "<a href='/'>Link to Homepage</a>\n";
+      html = html + "<p>\n";
+      html = html + "   <a href='/homepage.html'>Return to Homepage</a>\n";
       html = html + "</p>\n";
 
       // Look up some information from JDBC

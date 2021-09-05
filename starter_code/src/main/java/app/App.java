@@ -86,9 +86,7 @@ public class App {
       app.get(MemberPage.URL, new MemberPage());
       app.get(UpdateDetails.URL, new UpdateDetails());
       app.get(Index.URL, new Index());
-      app.get(Page1.URL, new Page1());
-      app.get(Page2.URL, new Page2());
-      app.get(Page3.URL, new Page3());
+      app.get(DisplayMembs.URL, new DisplayMembs());
       app.get(Posts.URL, new Posts());
       app.get(PostsDisplay.URL, new PostsDisplay());
       app.get(Friends.URL, new Friends());
@@ -98,8 +96,6 @@ public class App {
       app.post(Register.URL, new Register());
       app.post(MemberPage.URL, new MemberPage());
       app.post(UpdateDetails.URL, new UpdateDetails());
-      app.post(Page2.URL, new Page2());
-      app.post(Page3.URL, new Page3());
       app.post(Posts.URL, new Posts());
       app.post(PostsDisplay.URL, new PostsDisplay());
       app.post(Friends.URL, new Friends());
