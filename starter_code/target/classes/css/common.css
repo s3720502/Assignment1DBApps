@@ -5,21 +5,17 @@ Base styles
 body
 {
 	margin: 0%;
+	padding: 0;
 	color: #000000;
-	background-color: #e5e5f1;
+	background-color: #a7a7ce;
 	font: 1em/1.2 "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif;
-	position: fixed;
-	border-left: 100px solid red;
-	width: 2460;
-	height: 1440;
-	text-align: center;
+
 
 }
 
-center {
-	margin: -10%;
+.center {
+	margin: 0%;
 	display: block;
-	margin-top: 100px;
-	text-align: center;
-
+	margin-left: auto;
+	margin-right: auto;
 }
