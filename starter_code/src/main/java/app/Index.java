@@ -50,6 +50,7 @@ public class Index implements Handler {
       html = html + "<li> <a href='posts.html'>Posts</a> </li>\n";
       html = html + "<li> <a href='postdisplay.html'>All Posts</a> </li>\n";
       html = html + "<li> <a href='friends.html'>Friends</a> </li>\n";
+      html = html + "<li> <a href='friendreq.html'>Friends</a> </li>\n";
 
       // Finish the List HTML
       html = html + "</ul>\n";

@@ -93,6 +93,7 @@ public class App {
       app.get(PostsDisplay.URL, new PostsDisplay());
       app.get(Page6.URL, new Page6());
       app.get(Friends.URL, new Friends());
+      app.get(FriendReq.URL, new FriendReq());
 
       // Add / uncomment POST commands for any pages that need web form POSTS
       // app.post(Index.URL, new Index());
@@ -105,6 +106,7 @@ public class App {
       app.post(Posts.URL, new Posts());
       app.post(PostsDisplay.URL, new PostsDisplay());
       app.post(Friends.URL, new Friends());
+      app.post(FriendReq.URL, new FriendReq());
       // app.post(Page4.URL, new Page4());
       // app.post(Page5.URL, new Page5());
       // app.post(Page6.URL, new Page6());
