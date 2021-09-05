@@ -56,7 +56,7 @@ public class MemberPage implements Handler {
         }
       
       html = html + "<p>Return to Homepage: \n";
-      html = html + "<a href='/'>Link to Homepage</a>\n";
+      html = html + "<a href='/homepage.html'>Link to Homepage</a>\n";
       html = html + "</p>\n";
       
       html = html + "</body>" + "</html>\n";

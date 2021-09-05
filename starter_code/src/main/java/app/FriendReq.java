@@ -38,7 +38,7 @@ public class FriendReq implements Handler {
         html = html +       "<input type='radio' id='reject' name=status value='Rejected'>\n";
         html = html +       "<label for='reject'>Reject</label><br>\n";
         html = html +   "<div>\n";
-        html = html +   "<button type='submit' class='btn btn-primary'>Register</button>\n";
+        html = html +   "<button type='submit' class='btn btn-primary'>Submit</button>\n";
         html = html + "</form>\n";
 
         // Add HTML for Linking to Register Page

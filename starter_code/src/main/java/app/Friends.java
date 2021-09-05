@@ -38,7 +38,7 @@ public class Friends implements Handler {
         html = html +       "<label for='password'>Enter Your Email</label>\n";
         html = html +       "<input type='text' id='reqemail' name='reqemail'><br><br>\n";
         html = html +   "<div>\n";
-        html = html +   "<button type='submit' class='btn btn-primary'>Register</button>\n";
+        html = html +   "<button type='submit' class='btn btn-primary'>Send Request</button>\n";
         html = html + "</form>\n";
 
         // Add HTML for Linking to Register Page
