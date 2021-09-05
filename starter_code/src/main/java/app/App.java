@@ -91,7 +91,6 @@ public class App {
       app.get(Page3.URL, new Page3());
       app.get(Posts.URL, new Posts());
       app.get(PostsDisplay.URL, new PostsDisplay());
-      app.get(Page6.URL, new Page6());
 
       // Add / uncomment POST commands for any pages that need web form POSTS
       // app.post(Index.URL, new Index());

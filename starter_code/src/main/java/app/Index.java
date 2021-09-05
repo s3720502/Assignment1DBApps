@@ -44,17 +44,14 @@ public class Index implements Handler {
       html = html + "<link rel='stylesheet' type='text/css' href='Index.css' />\n";
 
       // Link for each page
-      html = html + "<li> <a href='register.html'>Register</a> </li>\n";
-      html = html + "<li> <a href='memberpage.html'>Member Details</a> </li>\n";
-      html = html + "<li> <a href='updatedetails.html'>Update Details</a> </li>\n";
-      html = html + "<li> <a href='page1.html'>Page 1</a> </li>\n";
-      html = html + "<li> <a href='page2.html'>Page 2</a> </li>\n";
-      html = html + "<li> <a href='page3.html'>Page 3</a> </li>\n";
-      html = html + "<li> <a href='page4.html'>Page 4</a> </li>\n";
-      html = html + "<li> <a href='page5.html'>Page 5</a> </li>\n";
-      html = html + "<li> <a href='page6.html'>Page 6</a> </li>\n";
-      html = html + "<li> <a href='posts.html'>Posts</a> </li>\n";
-      html = html + "<li> <a href='postdisplay.html'>All Posts</a> </li>\n";
+      html = html + "<a href='register.html'>Register</a>\n";
+      html = html + "<a href='memberpage.html'>Member Details</a>\n";
+      html = html + "<a href='updatedetails.html'>Update Details</a>\n";
+      html = html + "<a href='page1.html'>Page 1</a>\n";
+      html = html + "<a href='page2.html'>Page 2</a>\n";
+      html = html + "<a href='page3.html'>Page 3</a>\n";
+      html = html + "<a href='posts.html'>Create Post</a>\n";
+      html = html + "<a href='postdisplay.html'>View Posts</a>\n";
 
       // Finish the List HTML
       html = html + "</ul>\n";
