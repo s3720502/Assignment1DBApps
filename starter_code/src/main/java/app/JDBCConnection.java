@@ -175,7 +175,7 @@ public class JDBCConnection {
    public String updateDetails(String screenname, String status, String visi, String email){
       
       try{
-         PreparedStatement ps = connection.prepareStatement("UPDATE FBLMembers SET screenname = ?, status =  ?, visiibility = ? WHERE email = ?");
+         PreparedStatement ps = connection.prepareStatement("UPDATE FBLMembers SET screenname = ?, status =  ?, visiibility = ?, WHERE email = ?");
          ps.setQueryTimeout(30);
 
          ps.setString(1, screenname);
@@ -225,7 +225,6 @@ public class JDBCConnection {
             // For now we will just store the movieName and ignore the id
             members.add(memberName);
          }
-
          // Close the statement because we are done with it
          statement.close();
       } catch (SQLException e) {
@@ -237,30 +236,60 @@ public class JDBCConnection {
       return members;
    }
 
+   
    /**** LOGIN ATTEMPT 1****/
-   public ArrayList<String> getLogin(String email, String password) {
+   
+   public ArrayList<String> getLogin(String password, String email) {
       ArrayList<String> login = new ArrayList<String>();
 
+      // Connect to database 
       try {
-         Statement statement = connection.createStatement();
-         statement.setQueryTimeout(30);
+         PreparedStatement ps = connection.prepareStatement("SELECT * FROM PASSWORDS WHERE password = ? AND email = ?");
+         ps.setString(1, password);
+         ps.setString(2, email);
+         ResultSet results = ps.executeQuery();
 
-         String query = "SELECT *" + "\n" + "FROM passwords"
-         + "\n" + "WHERE email = '" + email + "' AND password = '" + password + "';";
+         //While statement that allows or denies the user to go to Homepage
+         if (results.next())
+         {
+            if(password.equals(results.getString(1)) && email.equals(results.getString(2)))
+               System.out.println("Logged in");
+               //code to allow access to Homepage
+            }
+         else
+            {
+               System.out.println("Bad username or password!");
+               //code to redirect to Registration page
+            }
+         
+         ps.close();
 
-         /*ResultSet results = */statement.executeQuery(query);
+      
 
+      /*
+         //Test to see if the query functions correctly   
+         email = results.getString("email");
+         password = results.getString("password");
+         System.out.println(password); 
+         System.out.println(email);
+         System.out.println("LOGIN SUCCESSFUL");
+
+         login.add(password);
+         login.add(email);
+      */
          // Close the statement because we are done with it
-         statement.close();
+         //ps.close();
+      
       } catch (SQLException e) {
          // If there is an error, lets just print the error
          System.err.println(e.getMessage());
+         System.out.println("LOGIN UNSUCCESSFUL TRY AGAIN");
       }
 
       // Finally we return all of the movies
       return login;
    }
-
+   /*
    /**
     * Get all of the Movies in the database
     */
