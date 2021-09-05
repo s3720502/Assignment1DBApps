@@ -6,9 +6,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-//import java.sql.Timestamp;
 import java.sql.PreparedStatement;
-//import java.time.LocalDateTime;
 
 /**
  * Class for Managing the JDBC Connection to a SQLLite Database. Allows SQL
@@ -78,7 +76,8 @@ public class JDBCConnection {
       }
    }
 
-   /**** REGISTRATION/CREATE NEW USER ****/
+   // This Will Register a User, from the Register.java page
+   // Takes All Params except visibility as we thought that should be changeable
    public String getRegister(String email, String fullname, String screenname, String dob, String gender, String status, String location) {
 
       try {
@@ -107,7 +106,8 @@ public class JDBCConnection {
    return null;
    }
 
-   /**** USER PASSWORD INSERT ****/
+   //This is paired with the Register method, in the Register.java
+   //This will take their email and the password and store it in the passwords table
    public String loginInsert(String enpassword, String email){
       
       try{
@@ -130,7 +130,9 @@ public class JDBCConnection {
       return null;
    }
 
-   //DISPLAY A MEMBERS DETAILS
+   //This acts like a Member Search Function
+   //Gets the email that the user looks up
+   //Retrieves all data of that email from the Members table
    public ArrayList<String> getMemDetails(String email){
       ArrayList<String> memberDetails = new ArrayList<String>();
 
@@ -170,8 +172,8 @@ public class JDBCConnection {
       return memberDetails;
    }
 
-   //UPDATE DETAILS OF A MEMBER
-   //UPDATES STATUS, VISIBILITY, AND SCREENNAME
+   //This Methood will update a users details, screenname, status and visibility
+   //Based on their email
    public String updateDetails(String screenname, String status, String visi, String email){
       
       try{
@@ -198,7 +200,7 @@ public class JDBCConnection {
    }
 
 
-   //DISPLAYS ALL MEMBERS (This one was a test function)
+   //This just prints all users names that are in the system
    public ArrayList<String> getMembers() {
       ArrayList<String> members = new ArrayList<String>();
 
@@ -210,34 +212,24 @@ public class JDBCConnection {
 
          ResultSet results = statement.executeQuery(query);
 
-         // Process all of the results
-         // The "results" variable is similar to an array
-         // We can iterate through all of the database query results
+         
          while (results.next()) {
-            // We can lookup a column of the a single record in the
-            // result using the column name
-            // BUT, we must be careful of the column type!
-            // int id = results.getInt("mvnumb");
+            
             String memberName = results.getString("fullname");
-            // int year = results.getInt("yrmde");
-            // String type = results.getString("mvtype");
-
-            // For now we will just store the movieName and ignore the id
+            
             members.add(memberName);
          }
 
-         // Close the statement because we are done with it
          statement.close();
       } catch (SQLException e) {
-         // If there is an error, lets just print the error
          System.err.println(e.getMessage());
       }
 
-      // Finally we return all of the movies
       return members;
    }
 
-   /**** LOGIN ATTEMPT 1****/
+   //This is the Login Method, it works partially
+   //Validation doesnt work completely but it does check the table properly
    public ArrayList<String> getLogin(String password, String email) {
       ArrayList<String> login = new ArrayList<String>();
 
@@ -262,22 +254,6 @@ public class JDBCConnection {
             }
          
          ps.close();
-
-      
-
-      /*
-         //Test to see if the query functions correctly   
-         email = results.getString("email");
-         password = results.getString("password");
-         System.out.println(password); 
-         System.out.println(email);
-         System.out.println("LOGIN SUCCESSFUL");
-
-         login.add(password);
-         login.add(email);
-      */
-         // Close the statement because we are done with it
-         //ps.close();
       
       } catch (SQLException e) {
          // If there is an error, lets just print the error
@@ -289,46 +265,10 @@ public class JDBCConnection {
       return login;
    }
 
-   /**
-    * Get all the movies in the database by a given type. Note this takes a string
-    * of the type as an argument! This has been implemented for you as an example.
-    * HINT: you can use this to find all of the horror movies!
-    */
-   public ArrayList<String> getMoviesByType(String movieType) {
-      ArrayList<String> movies = new ArrayList<String>();
-
-      // Setup the variable for the JDBC connection
-      // Connection connection = null;
-
-      try {
-         // Prepare a new SQL Query & Set a timeout
-         Statement statement = connection.createStatement();
-         statement.setQueryTimeout(30);
-
-         // The Query
-         String query = "SELECT *" + "\n" + "FROM movie" + "\n" + "WHERE LOWER(mvtype) = LOWER('" + movieType + "')";
-         System.out.println(query);
-
-         // Get Result
-         ResultSet results = statement.executeQuery(query);
-
-         // Process all of the results
-         while (results.next()) {
-            String movieName = results.getString("mvtitle");
-            movies.add(movieName);
-         }
-
-         // Close the statement because we are done with it
-         statement.close();
-      } catch (SQLException e) {
-         // If there is an error, lets just pring the error
-         System.err.println(e.getMessage());
-      }
-
-      // Finally we return all of the movies
-      return movies;
-   }
-
+   //This Method is for creating posts
+   //Gets the content they entered, gets their email
+   //Couldnt automate the postIDs
+   //Timestamp is automatic
    public String insertPosts(String postID, String content, String posttime, String parpostID, String postemail){
 
       try{
@@ -356,6 +296,7 @@ public class JDBCConnection {
       return null;
    }
 
+   //This will display all the posts created
    public ArrayList<String> displayPosts(){
       ArrayList<String> disPosts = new ArrayList<String>();
 
@@ -382,7 +323,9 @@ public class JDBCConnection {
       }
       return disPosts;
    }
-   //May need to change to String instead of ArrayList
+
+   //This allows a user to send a friend request to a user
+   //Status is set a 'Sent'
    public ArrayList<String> friendRequest(String reqemail, String recemail, String status, String date){
       ArrayList<String> friendReq = new ArrayList<String>();
 
@@ -408,7 +351,8 @@ public class JDBCConnection {
 
       return friendReq;
    }
-   //May need to change to String instead of ArrayList
+
+   //This is where the user accepts or rejects the request and updates the status column of our friends table
    public ArrayList<String> friendUpdate(String status, String email){
       ArrayList<String> friendUp = new ArrayList<String>();
       

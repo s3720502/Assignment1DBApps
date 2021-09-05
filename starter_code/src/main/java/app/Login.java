@@ -1,7 +1,6 @@
 package app;
 
 import java.util.ArrayList;
-
 import io.javalin.http.Context;
 import io.javalin.http.Handler;
 
@@ -65,7 +64,6 @@ public class Login implements Handler {
         // DO NOT MODIFY THIS
         // Makes Javalin render the webpage
         context.html(html);
-        //context.sessionAttribute(key, value);
     }
 
     public String loginUser(String email, String password) {

@@ -16,6 +16,7 @@ public class UpdateDetails implements Handler {
         // Create a simple HTML webpage in a String
         String html = "<html>\n";
 
+        //These Lines of Code Below get the Details from our UpdateDetails.html form
         String email = context.formParam("upemail");
         if (email == null || email == ""){
             html = html + "<h2><i>No Results to show for textbox</i></h2>\n";
@@ -32,7 +33,7 @@ public class UpdateDetails implements Handler {
         if (email == null || email == ""){
             html = html + "<h2><i>No Results to show for textbox</i></h2>\n";
         }
-        updateMemDetails(screenname, status, visi, email);
+        updateMemDetails(screenname, status, visi, email);//Gets sent into this method
       
         context.html(html);
         context.render("updatedetails.html");
@@ -40,7 +41,7 @@ public class UpdateDetails implements Handler {
 
     public String updateMemDetails(String screenname, String status, String visi, String email){
         JDBCConnection jdbc = JDBCConnection.getConnection();
-        jdbc.updateDetails(screenname, status, visi, email);
+        jdbc.updateDetails(screenname, status, visi, email);//sends it through to our updateDetails in the JDBC
         return null;
     }
 }

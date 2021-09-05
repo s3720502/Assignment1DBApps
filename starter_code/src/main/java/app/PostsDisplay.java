@@ -1,7 +1,6 @@
 package app;
 
 import java.util.ArrayList;
-
 import io.javalin.http.Context;
 import io.javalin.http.Handler;
 
@@ -22,6 +21,7 @@ public class PostsDisplay implements Handler {
 
       html = html + "<body>\n";
 
+      //This displays all the posts by calling the JDBC method and creating a list element to display the posts
       JDBCConnection jdbc = JDBCConnection.getConnection();
       ArrayList<String> disPosts = jdbc.displayPosts();
       
@@ -40,20 +40,4 @@ public class PostsDisplay implements Handler {
       html = html + "</body>" + "</html>\n";
       context.html(html);
    }
-
-   // public String outputPosts(){
-   //    String html = "";
-   //    html = html + "<h2>All Posts</h2>\n";
-
-   //    JDBCConnection jdbc = JDBCConnection.getConnection();
-   //    ArrayList<String> disPosts = jdbc.displayPosts(disPosts);
-   
-   //    html = html + "<ul>";
-   //    for (String disPo : disPosts){
-   //       html = html + "<li>" + disPo + "</li>\n";
-   //    }
-   //    html = html + "</ul>";
-
-   //    return html;
-   // }
 }

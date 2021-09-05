@@ -26,7 +26,7 @@ public class FriendReq implements Handler {
         // Add HTML for form. Includes redirect to home
         // Includes Textfields for Email and Password
 
-        /****** Create Form for Friend Request ******/
+        /****** Create Form for Friend Accept or Reject Request ******/
         html = html + "<form action='/friendreq.html' method='post'>\n"; 
         html = html +   "<div class=recemail>\n";
         html = html +       "<label for='email'>Enter Recipient Email:</label>\n";
@@ -58,12 +58,11 @@ public class FriendReq implements Handler {
         // DO NOT MODIFY THIS
         // Makes Javalin render the webpage
         context.html(html);
-        //context.sessionAttribute(key, value);
     }
 
     public String updateFriends(String status, String email){
         JDBCConnection jdbc = JDBCConnection.getConnection();
-        jdbc.friendUpdate(status, email);
+        jdbc.friendUpdate(status, email);//Calls friendUpdate from JDBC
         return null;
     }
 }

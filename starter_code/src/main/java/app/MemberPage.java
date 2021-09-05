@@ -1,21 +1,9 @@
 package app;
 
 import java.util.ArrayList;
-
 import io.javalin.http.Context;
 import io.javalin.http.Handler;
 
-/**
- * Temporary HTML as an example page.
- * 
- * Based on the Project Workshop code examples. This page currently: - Provides
- * a link back to the index page - Displays the list of movies from the Movies
- * Database using the JDBCConnection
- *
- * @author Timothy Wiley, 2021. email: timothy.wiley@rmit.edu.au
- * @author Santha Sumanasekara, 2021. email: santha.sumanasekara@rmit.edu.au
- * @author Halil Ali, 2021. email: halil.ali@rmit.edu.au
- */
 public class MemberPage implements Handler {
 
    // URL of this page relative to http://localhost:7000/
@@ -32,7 +20,7 @@ public class MemberPage implements Handler {
       html = html + "<link rel='stylesheet' type='text/css' href='common.css' />\n";
 
       html = html + "<body>\n";
-
+      //imbedded html form created in java for our page
       html = html + "<form action='/memberpage.html' method='post'>\n";
       html = html + "   <h1>Enter Email and Full name:</h1>\n";
       html = html + "   <div class='memberDetails'>\n";
@@ -63,6 +51,7 @@ public class MemberPage implements Handler {
       context.html(html);
    }
 
+   //This method displays all a members data when searched
    public String outputDetails(String email){
       String html = "";
       html = html + "<h2>Your Member Details</h2>\n";

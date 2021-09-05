@@ -50,6 +50,7 @@ public class Friends implements Handler {
         html = html + "</body>\n";
         html = html + "</html>\n";
 
+        //Gets form params from above for user input
         String recemail = context.formParam("recemail");
         String reqemail = context.formParam("reqemail");
         String status = "Sent";
@@ -61,18 +62,11 @@ public class Friends implements Handler {
         // DO NOT MODIFY THIS
         // Makes Javalin render the webpage
         context.html(html);
-        //context.sessionAttribute(key, value);
     }
 
     public ArrayList<String> friendRequests(String recemail, String reqemail, String status, String date){
         JDBCConnection jdbc = JDBCConnection.getConnection();
-        jdbc.friendRequest(reqemail, recemail, status, date);
+        jdbc.friendRequest(reqemail, recemail, status, date);//Calls friendRequest method in JDBC
         return null;
     }
-
-    // public String updateFriends(String status, String email){
-    //     JDBCConnection jdbc = JDBCConnection.getConnection();
-    //     jdbc.friendUpdate(status, email);
-    //     return null;
-    // }
 }

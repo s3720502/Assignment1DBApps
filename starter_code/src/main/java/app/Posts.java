@@ -16,10 +16,11 @@ public class Posts implements Handler {
    public void handle(Context context) throws Exception {
       String html = "";
 
-      Timestamp ts = new Timestamp(System.currentTimeMillis());
+      Timestamp ts = new Timestamp(System.currentTimeMillis());//Get a timestamp of users system
 
-      System.out.println(ts);
-
+      //System.out.println(ts); //this is for console debugging
+      
+      //This gets the data that the user inputs from our posts.html page
       String postID = context.formParam("postid");
       if (postID == null || postID == ""){
           postID = null;
@@ -47,8 +48,7 @@ public class Posts implements Handler {
 
    public String makePosts(String postID, String content, String posttime, String parpostID, String postemail){
       JDBCConnection jdbc = JDBCConnection.getConnection();
-      jdbc.insertPosts(postID, content, posttime, parpostID, postemail);
+      jdbc.insertPosts(postID, content, posttime, parpostID, postemail);//Calls insertposts in the JDBC
       return null;
    }
-
 }

@@ -14,7 +14,8 @@ public class Register implements Handler {
         // Create a simple HTML webpage in a String
         String html = "<html>\n";
 
-        /****** INSERT WORKS NOW I JUST TO ADD NULL VERIFICATION ******/        
+        //THIS PAGE ALLOWS FOR REGISTRATION
+        //These Lines of Code Below get the Details from our register.html form 
         String email = context.formParam("email");
         if (email == null || email == ""){
             email = null;
@@ -44,14 +45,14 @@ public class Register implements Handler {
             location = null;
         }
 
-        createUser(email, fullname, screenname, dob, gender, status, location);
+        createUser(email, fullname, screenname, dob, gender, status, location);// sends the information above to this specific method
         
         String password = context.formParam("password");
         if (password == null || password == ""){
             password = "dummy";
         }
         String enpassword = passEncrypt(password);
-        createLogin(enpassword, email);
+        createLogin(enpassword, email);// sends the password and email to this method only
         
 
         // DO NOT MODIFY THIS
@@ -60,6 +61,7 @@ public class Register implements Handler {
         context.render("register.html");
     }
 
+    //This method encrypts the password and spits out as an enpassword as above
     public String passEncrypt(String password) throws Exception{
         byte[] X= Base64.getEncoder().encode(password.getBytes());
         String return_string = new String(X);
@@ -69,13 +71,13 @@ public class Register implements Handler {
     
     public String createLogin(String enpassword, String email){
         JDBCConnection jdbc = JDBCConnection.getConnection();
-        jdbc.loginInsert(enpassword, email);
+        jdbc.loginInsert(enpassword, email);//Calls the loginInsert method in JDBC
         return null;
     }
 
     public String createUser(String email, String fullname, String screenname, String dob, String gender, String status, String location) {
         JDBCConnection jdbc = JDBCConnection.getConnection();
-        jdbc.getRegister(email, fullname, screenname, dob, gender, status, location);
+        jdbc.getRegister(email, fullname, screenname, dob, gender, status, location);//Calls the getRegister method in JDBC
         return null;
     }
 }
