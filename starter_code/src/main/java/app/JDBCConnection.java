@@ -398,4 +398,54 @@ public class JDBCConnection {
       }
       return disPosts;
    }
+   //May need to change to String instead of ArrayList
+   public ArrayList<String> friendRequest(String reqemail, String recemail, String status, String date){
+      ArrayList<String> friendReq = new ArrayList<String>();
+
+      try{
+         PreparedStatement ps = connection.prepareStatement("INSERT INTO Friends (requesteremail, receiveremail, status, date) VALUES (?,?,?,TO_DATE(?, 'YYYY-MM-DD')");
+         ps.setQueryTimeout(30);
+
+         ps.setString(1,reqemail);
+         ps.setString(2, recemail);
+         ps.setString(3, status);
+         ps.setString(4, date);
+
+         int x = ps.executeUpdate();
+            
+         if(x > 0){
+            System.out.println("Friend Request Sent Successfully!");
+         } else{
+            System.out.println("Friend Request Unsuccessful...");
+         }
+      }catch (SQLException e) {
+         System.err.println(e.getMessage());
+      }
+
+      return friendReq;
+   }
+   //May need to change to String instead of ArrayList
+   public ArrayList<String> friendUpdate(String status, String email){
+      ArrayList<String> friendUp = new ArrayList<String>();
+      
+      try{
+         PreparedStatement ps = connection.prepareStatement("UPDATE Friends SET status = ? WHERE receiveremail = ?");
+         ps.setQueryTimeout(30);
+
+         ps.setString(1, status);
+         ps.setString(2, email);
+
+         int x = ps.executeUpdate();
+            
+         if(x > 0){
+            System.out.println("Friendship Updated Successfully!");
+         } else{
+            System.out.println("Friendship Update Unsuccessful...");
+         }
+      }catch (SQLException e) {
+         System.err.println(e.getMessage());
+      }
+
+      return friendUp;
+   }
 }
