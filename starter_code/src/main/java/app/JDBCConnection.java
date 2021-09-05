@@ -403,7 +403,7 @@ public class JDBCConnection {
       ArrayList<String> friendReq = new ArrayList<String>();
 
       try{
-         PreparedStatement ps = connection.prepareStatement("INSERT INTO Friends (requesteremail, receiveremail, status, date) VALUES (?,?,?,TO_DATE(?, 'YYYY-MM-DD')");
+         PreparedStatement ps = connection.prepareStatement("INSERT INTO Friends (requesteremail, receiveremail, status, dateadded) VALUES (?,?,?,TO_DATE(?, 'YYYY-MM-DD'))");
          ps.setQueryTimeout(30);
 
          ps.setString(1,reqemail);

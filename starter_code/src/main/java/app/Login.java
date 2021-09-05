@@ -56,9 +56,8 @@ public class Login implements Handler {
         html = html + "</body>" + "</html>\n" + "</div>";
 
         String email = context.formParam("email");
-        loginUser(email);
         String password = context.formParam("password");
-        loginUser(password);
+        loginUser(email, password);
 
         // DO NOT MODIFY THIS
         // Makes Javalin render the webpage
@@ -66,9 +65,9 @@ public class Login implements Handler {
         //context.sessionAttribute(key, value);
     }
 
-    public String loginUser(String type) {
+    public String loginUser(String email, String password) {
         JDBCConnection jdbc = JDBCConnection.getConnection();
-        ArrayList<String> login = jdbc.getLogin(type, type); 
+        ArrayList<String> login = jdbc.getLogin(email, password); 
         
         return login.toString();
     }
